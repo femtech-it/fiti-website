@@ -4,41 +4,46 @@ import { BsInstagram } from "react-icons/bs";
 import { BsLinkedin } from "react-icons/bs";
 
 const Footer = () => {
-  return (
-    <footer className="p-5 flex justify-around gap-10">
-        <div className="md:w-[500px] w-full flex flex-col gap-4">
-            <img src="/assets/f_logo.png" alt="" className="w-[150px]" />
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est fugit saepe modi odio adipisci! Esse, quod et. Quaerat quidem eos laboriosam iure deleniti esse cum aliquid distinctio quas minus ipsam iste tenetur quam veritatis ut, necessitatibus adipisci at temporibus nobis non quia nostrum doloribus blanditiis assumenda. Vitae dolorum maiores facere ipsa quis. Molestias neque distinctio vero eaque eum ab amet.</p>
-            <div className="flex items-center gap-3">
-                <Link to={""}><MdFacebook /></Link>
-                <Link to={""}><BsInstagram /></Link>
-                <Link to={""}><BsLinkedin /></Link>
+    return (
+        <footer className="p-8 md:p-12 lg:p-20 bg-gray-50 flex flex-col md:flex-row justify-between gap-12 lg:gap-20">
+            <div className="flex-1 flex flex-col gap-6">
+                <img src="/assets/f_logo.png" alt="" className="w-[180px]" />
+                <p className="text-gray-600 max-w-md leading-relaxed">
+                    At FEMTECH Training, we equip individuals with cutting-edge digital skills, fostering innovation, career growth, and economic empowerment in the ever-evolving tech landscape
+                </p>
+                <div className="flex items-center gap-4">
+                    <Link to={""} className="text-primary text-2xl hover:text-secondary transition-colors"><MdFacebook /></Link>
+                    <Link to={""} className="text-primary text-2xl hover:text-secondary transition-colors"><BsInstagram /></Link>
+                    <Link to={""} className="text-primary text-2xl hover:text-secondary transition-colors"><BsLinkedin /></Link>
+                </div>
             </div>
-        </div>
-        <div className="flex flex-col gap-3">
-            <h1 className="text-2xl font-bold">Quick Links</h1>
-            <ul>
-                <li><Link to={""}>About us</Link></li>
-                <li><Link to={""}>Courses</Link></li>
-                <li><Link to={""}>Terms & Condition</Link></li>
-                <li><Link to={""}>FAQ</Link></li>
-                <li><Link to={""}>Resources</Link></li>
-                <li><Link to={""}>Students</Link></li>
-                <li><Link to={""}>Gallery</Link></li>
-                <li><Link to={""}>privacy Police</Link></li>
-            </ul>
-        </div>
-        <div className="flex flex-col gap-3 md:w-[400px] w-[100%]">
-            <h1 className="text-2xl font-bold">Contact</h1>
-            <ul>
-                <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus magnam modi molestiae placeat culpa blanditiis cum aliquam accusantium, fugiat ipsam pariatur, ducimus eos. Aliquam dolor esse, porro repellat ipsam perspiciatis.</li>
-                <li>fiti@femtechtraining.com</li>
-                <li>+(234) 705-996-1675</li>
-            </ul>
-        </div>
-        
-    </footer>
-  )
+
+            <div className="flex flex-col gap-6 min-w-[200px]">
+                <h1 className="text-2xl font-bold text-primary">Quick Links</h1>
+                <ul className="flex flex-col gap-3">
+                    <li><Link to={"/about"} className="text-gray-600 hover:text-secondary transition-colors">About us</Link></li>
+                    <li><Link to={"/courses"} className="text-gray-600 hover:text-secondary transition-colors">Courses</Link></li>
+                    <li><Link to={"/terms"} className="text-gray-600 hover:text-secondary transition-colors">Terms & Condition</Link></li>
+                    <li><Link to={""} className="text-gray-600 hover:text-secondary transition-colors">FAQ</Link></li>
+                    <li><Link to={"/resources"} className="text-gray-600 hover:text-secondary transition-colors">Resources</Link></li>
+                    <li><Link to={"/student"} className="text-gray-600 hover:text-secondary transition-colors">Students</Link></li>
+                    <li><Link to={"/gallery"} className="text-gray-600 hover:text-secondary transition-colors">Gallery</Link></li>
+                    <li><Link to={""} className="text-gray-600 hover:text-secondary transition-colors">Privacy Policy</Link></li>
+                </ul>
+            </div>
+
+            <div className="flex-1 flex flex-col gap-6">
+                <h1 className="text-2xl font-bold text-primary">Contact</h1>
+                <ul className="flex flex-col gap-4">
+                    <li className="text-gray-600 leading-relaxed">
+                        Ilorin Office: Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus magnam modi molestiae placeat culpa blanditiis.
+                    </li>
+                    <li className="font-semibold text-primary">fiti@femtechtraining.com</li>
+                    <li className="font-semibold text-primary">+(234) 705-996-1675</li>
+                </ul>
+            </div>
+        </footer>
+    )
 }
 
 export default Footer

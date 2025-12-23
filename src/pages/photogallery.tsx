@@ -10,50 +10,91 @@ const Photogallery = () => {
   const repeatedSecondIMG = Array.from({ length: 16 }, () => DisplaySecondImg);
 
   return (
-    <section >
-      <div className="min-h-screen flex flex-col items-center justify-center bg-no-repeat mt-[60px]">
-        <img src="/assets/gallery_img.png" alt="" />
-        <button className="bg-primary py-[8px] w-[550px]  rounded-tl-[20px] rounded-br-[20px] text-white font-sans text-[36px] font-bold mx-[360px] shadow-md mt-[-30px]">PHOTO GALLERY</button>
-      </div>
-      <div className="flex flex-col justify-center items-center gap-6">
-        <h1 className="text-[40px]">Training Sessions</h1>
-        <div className="grid grid-cols-4  max-w-5xl mx-auto mt-[50px] gap-[10px] place-items-center justify-items-center">
-          {repeatedIMG.map((item, index) => (
-            <div className="" key={index}>
-              <img src={item.img} alt="" />
-            </div>
-          ))}
+    <section className="bg-gray-50 pt-24 pb-20">
+      <div className="relative mb-16">
+        <div className="w-full h-[300px] md:h-[500px] overflow-hidden">
+          <img src="/assets/gallery_img.png" alt="Gallery Hero" className="w-full h-full object-cover" />
         </div>
-        <button className="bg-orange-500 text-white py-3 px-18 rounded-lg hover:bg-orange-600 flex items-center justify-center my-[50px]">View More</button>
+        <div className="flex justify-center -mt-6 md:-mt-10">
+          <button className="bg-primary py-3 md:py-4 px-10 md:px-20 rounded-tl-2xl rounded-br-2xl text-white font-bold text-xl md:text-3xl lg:text-4xl shadow-2xl">
+            PHOTO GALLERY
+          </button>
+        </div>
+      </div>
 
-      </div>
-      <div className="flex flex-col items-center justify-center gap-6">
-        <h1 className="text-[40px]">Event and Workshop</h1>
-        <div className="grid grid-cols-4  max-w-5xl mx-auto mt-[50px] gap-[10px] place-items-center justify-items-center">
-          {repeatedSecondIMG.map((item, index) => (
-            <div className="" key={index}>
-              <img src={item.img} alt="" />
-            </div>
-          ))}
+      <div className="container mx-auto px-6 max-w-7xl space-y-24">
+        {/* Training Sessions */}
+        <div className="flex flex-col items-center gap-8">
+          <h1 className="text-3xl md:text-5xl font-black text-center text-gray-800">Training Sessions</h1>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 w-full place-items-center">
+            {repeatedIMG.map((item, index) => (
+              <div key={index} className="w-full aspect-square overflow-hidden rounded-2xl shadow-md hover:scale-105 transition-transform">
+                <img src={item.img} alt={`Training ${index}`} className="w-full h-full object-cover" />
+              </div>
+            ))}
+          </div>
+          <button className="bg-secondary hover:bg-opacity-90 text-white font-bold py-3 px-12 rounded-xl transition-transform hover:scale-105 shadow-lg">
+            View More
+          </button>
         </div>
-        <button className="bg-orange-500 text-white py-3 px-18 rounded-lg hover:bg-orange-600 flex items-center justify-center my-[50px]">View More</button>
-      </div>
-      <div className="flex flex-col items-center justify-center gap-6">
-     <h1 className="text-[40px]">Submit Your Pictures  </h1>
-     <p >Have photos from a FEMTECH event or project? Upload them to be featured in our gallery!</p>
-     <button className="bg-orange-500 text-white py-3 px-18 rounded-lg hover:bg-orange-600 flex items-center justify-center ">Upload Photos</button>
-      </div>
-      <div className="flex flex-col items-center justify-center gap-6 mt-[50px]">
-        <h1  className="text-[40px]">Take a virtual tour of our training center</h1>
-        <p>A behind-the-scenes look at our classrooms, labs, and student workspaces</p>
-        <div className="max-w-5xl mx-auto">
-        <iframe width="1240" height="798.478515625" src="https://www.youtube.com/embed/s0op1fBWXyY?si=x5rlCIGZawU9QUSI" title="YouTube video player"   frameBorder="0"allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen className="w-[1000px]"></iframe>
+
+        {/* Event and Workshop */}
+        <div className="flex flex-col items-center gap-8">
+          <h1 className="text-3xl md:text-5xl font-black text-center text-gray-800">Event and Workshop</h1>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 w-full place-items-center">
+            {repeatedSecondIMG.map((item, index) => (
+              <div key={index} className="w-full aspect-square overflow-hidden rounded-2xl shadow-md hover:scale-105 transition-transform">
+                <img src={item.img} alt={`Event ${index}`} className="w-full h-full object-cover" />
+              </div>
+            ))}
+          </div>
+          <button className="bg-secondary hover:bg-opacity-90 text-white font-bold py-3 px-12 rounded-xl transition-transform hover:scale-105 shadow-lg">
+            View More
+          </button>
         </div>
-        <div className="flex flex-col items-center justify-center gap-7 mt-[50px]">
-        <h1  className="text-[40px]">Watch all our latest videos on YouTube!</h1>
-        <div >
-        <iframe width="1240" height="798.478515625" src="https://www.youtube.com/embed/5_DAfHWPiLs?si=2xzNokqDrygUcyhN" title="YouTube video player"   frameBorder="0"allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+
+        {/* Submit Photos */}
+        <div className="bg-white p-8 md:p-16 rounded-[40px] shadow-xl text-center border border-gray-100 max-w-4xl mx-auto">
+          <h1 className="text-3xl md:text-4xl font-black text-gray-800 mb-4">Submit Your Pictures</h1>
+          <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
+            Have photos from a FEMTECH event or project? Upload them to be featured in our gallery!
+          </p>
+          <button className="bg-secondary hover:bg-opacity-90 text-white font-bold py-4 px-12 rounded-xl transition-transform hover:scale-105 shadow-lg">
+            Upload Photos
+          </button>
         </div>
+
+        {/* Virtual Tour */}
+        <div className="flex flex-col items-center gap-8 text-center">
+          <div>
+            <h1 className="text-3xl md:text-5xl font-black text-gray-800 mb-2">Take a virtual tour</h1>
+            <p className="text-lg text-gray-600">A behind-the-scenes look at our training center</p>
+          </div>
+          <div className="w-full max-w-5xl aspect-video rounded-3xl overflow-hidden shadow-2xl">
+            <iframe
+              src="https://www.youtube.com/embed/s0op1fBWXyY?si=x5rlCIGZawU9QUSI"
+              title="Virtual Tour"
+              className="w-full h-full"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen
+            ></iframe>
+          </div>
+        </div>
+
+        {/* Latest Videos */}
+        <div className="flex flex-col items-center gap-8 text-center pb-12">
+          <h1 className="text-3xl md:text-5xl font-black text-gray-800">Watch our latest videos!</h1>
+          <div className="w-full max-w-5xl aspect-video rounded-3xl overflow-hidden shadow-2xl">
+            <iframe
+              src="https://www.youtube.com/embed/5_DAfHWPiLs?si=2xzNokqDrygUcyhN"
+              title="Latest Videos"
+              className="w-full h-full"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen
+            ></iframe>
+          </div>
         </div>
       </div>
     </section>

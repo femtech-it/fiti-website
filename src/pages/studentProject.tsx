@@ -13,7 +13,6 @@ const StudentProject = () => {
       author: 'Tiaraoluwa Olowopo',
       image: '/assets/student2.png',
     },
-
     {
       title: 'FitTrack - A Health and Fitness App.',
       description: 'UX case study on fitness tracking for beginners',
@@ -40,53 +39,63 @@ const StudentProject = () => {
     },
   ];
 
-
   return (
-    <section className="min-h-screen flex justify-center items-center gap-5 flex-col mt-[100px]">
-      <div>
-        <div>
-          <img src="../assets/studentimg.png" alt="" />
-          <button className="bg-primary py-[8px] w-[550px]  rounded-tl-[20px] rounded-br-[20px] text-white font-sans text-[36px] font-bold mx-[360px] shadow-md mt-[-30px]">STUDENTS’ PROJECT</button>
+    <section className="bg-gray-50 pt-24 pb-20">
+      <div className="relative mb-16">
+        <div className="w-full h-[300px] md:h-[500px] overflow-hidden">
+          <img src="/assets/studentimg.png" alt="Student Projects Hero" className="w-full h-full object-cover" />
         </div>
-        <div>
-          <small className="flex items-center justify-center mt-[20px]">Showcasing innovation, creativity, and tech skills from our talented students!</small>
+        <div className="flex justify-center -mt-6 md:-mt-10">
+          <button className="bg-primary py-3 md:py-4 px-10 md:px-20 rounded-tl-2xl rounded-br-2xl text-white font-bold text-xl md:text-3xl lg:text-4xl shadow-2xl">
+            STUDENTS’ PROJECT
+          </button>
         </div>
-        <h1 className="flex items-center justify-center mt-[20px] text-black text-[30px]">Latest Students Projects</h1>
       </div>
-      <div className="space-y-16">
+
+      <div className="container mx-auto px-6 max-w-4xl text-center mb-24">
+        <p className="text-lg md:text-xl text-gray-700 leading-relaxed font-medium">
+          Showcasing innovation, creativity, and tech skills from our talented students!
+        </p>
+        <h1 className="text-3xl md:text-4xl font-black text-gray-800 mt-8">Latest Students Projects</h1>
+        <div className="h-1.5 w-24 bg-secondary mx-auto rounded-full mt-4" />
+      </div>
+
+      <div className="container mx-auto px-6 max-w-6xl space-y-20">
         {studentProjects.map((project, index) => (
           <div
             key={index}
-            className={` mb-[30px] flex flex-col md:flex-row ${index % 2 === 1 ? 'md:flex-row-reverse' : ''} items-center gap-[20px]`}
+            className={`flex flex-col md:flex-row ${index % 2 === 1 ? 'md:flex-row-reverse' : ''} items-center gap-12`}
           >
-            <div className="w-full md:w-1/2">
-              <img
-                src={project.image}
-                alt="Project"
-                className="rounded-lg shadow-lg w-full"
-              />
+            <div className="w-full md:w-1/2 group">
+              <div className="overflow-hidden rounded-[40px] shadow-xl">
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+              </div>
             </div>
 
-
-            {/* Text */}
-            <div className="w-full md:w-1/2 md:text-left space-y-4 m-0 p-0">
-              <h3 className="text-2xl font-bold ">{project.title}</h3>
-              <p className="text-gray-700 ">{project.description}</p>
-              <p className="text-sm text-gray-500 ">By: {project.author}</p>
-              <div className="flex items-center justify-center">
-                <button className="bg-orange-500 text-white py-2 px-6 rounded-md hover:bg-orange-600 flex items-center justify-center">
-                  View Project
-                </button>
+            <div className="w-full md:w-1/2 text-center md:text-left space-y-6">
+              <h3 className="text-2xl md:text-3xl font-bold text-gray-800 leading-tight">{project.title}</h3>
+              <p className="text-lg text-gray-600 leading-relaxed">{project.description}</p>
+              <div className="flex items-center justify-center md:justify-start gap-4">
+                <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center text-primary font-bold">
+                  {project.author.charAt(0)}
+                </div>
+                <p className="text-sm font-bold text-gray-500 uppercase tracking-widest">By: {project.author}</p>
               </div>
 
+              <div className="pt-4">
+                <button className="bg-secondary hover:bg-opacity-90 text-white font-bold py-3 px-10 rounded-xl shadow-lg transition-transform hover:scale-105 inline-flex items-center gap-2">
+                  View Project
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                </button>
+              </div>
             </div>
           </div>
         ))}
       </div>
-
-
-
-
     </section>
   )
 }
