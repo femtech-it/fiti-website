@@ -62,3 +62,14 @@ export const fetchCourses = async (params: FetchCoursesParams = {}): Promise<Cou
   });
   return response.data;
 };
+
+export interface SingleCourseResponse {
+  status: string;
+  message: string;
+  data: Course;
+}
+
+export const fetchCourseById = async (id: string | number): Promise<SingleCourseResponse> => {
+  const response = await api.get(`/courses/${id}`);
+  return response.data;
+};

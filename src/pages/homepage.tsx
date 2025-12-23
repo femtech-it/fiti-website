@@ -1,4 +1,5 @@
 // Hero redesigned with custom buttons for better styling control
+import { Link } from "react-router-dom";
 import AdvantageSection from "./components/AdvantageSection"
 import VisionSection from "./components/VisionSection"
 import MissionSection from "./components/MissionSection"
@@ -30,11 +31,12 @@ const Homepage = () => {
               Providing hands-on tech training that equips you with the skills to excel in today's digital world.
             </p>
             <div className="flex flex-wrap justify-center lg:justify-start gap-4 md:gap-8 pt-4 md:pt-6">
-              <button
-                className="bg-white text-[#0010A3] hover:bg-gray-100 h-14 md:h-16 px-8 md:px-16 text-xl md:text-2xl font-black rounded-md border-none cursor-pointer shadow-2xl transition-transform hover:scale-105"
+              <Link
+                to="/registration"
+                className="bg-white text-[#0010A3] hover:bg-gray-100 h-14 md:h-16 px-8 md:px-16 text-xl md:text-2xl font-black rounded-md border-none cursor-pointer shadow-2xl transition-transform hover:scale-105 flex items-center justify-center no-underline"
               >
                 Enroll
-              </button>
+              </Link>
               <button
                 className="bg-[#F67809] text-white hover:bg-[#E56708] h-14 md:h-16 px-6 md:px-12 text-xl md:text-2xl font-black rounded-md cursor-pointer border-none shadow-2xl transition-transform hover:scale-105"
               >

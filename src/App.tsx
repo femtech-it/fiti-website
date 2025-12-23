@@ -1,5 +1,6 @@
 
 import { BrowserRouter, Routes, Route } from "react-router-dom"
+import { Toaster } from "sonner";
 import Navbar from "./pages/components/navbar"
 import Homepage from "./pages/homepage"
 import Footer from "./pages/components/footer"
@@ -39,6 +40,7 @@ function App() {
         <Route path="/curriculum" element={<Curriculum />} />
         <Route path="/course/:id" element={<DisplayCourses />} />
       </Routes>
+      <Toaster position="top-right" richColors />
       <Footer />
     </BrowserRouter>
   )

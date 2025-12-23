@@ -195,6 +195,7 @@ const CoursesPages = () => {
                     {data?.data.result.map((course) => (
                       <CourseCard
                         key={course.id}
+                        id={course.id}
                         name={course.name}
                         description={course.description}
                         price={course.price}
