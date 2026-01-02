@@ -1,6 +1,7 @@
 
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import { Toaster } from "sonner";
+import SEO from "./components/SEO"
 import Navbar from "./pages/components/navbar"
 import Homepage from "./pages/homepage"
 import Footer from "./pages/components/footer"
@@ -24,6 +25,7 @@ function App() {
 
   return (
     <BrowserRouter>
+      <SEO />
       <Navbar />
       <Routes>
         <Route path="/" element={<Homepage />} />

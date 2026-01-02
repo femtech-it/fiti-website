@@ -133,8 +133,11 @@ const Resourcepage = () => {
 
       <div className="container mx-auto px-6 max-w-7xl">
         <h1 className="text-3xl md:text-5xl font-bold text-center text-gray-800 mt-12 mb-12">Downloadable Study Guide</h1>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 mb-24 max-w-6xl mx-auto">
-          {DisplayCourses.map((items, index) => (
+
+        <h1 className="text-5xl text-center text-gray-300">coming soon...</h1>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 mb-24 max-w-6xl mx-auto justify-center items-center">
+          {/* {DisplayCourses.map((items, index) => (
             <div key={index} className="flex flex-col items-center bg-white p-8 rounded-[40px] shadow-xl border border-gray-100 group hover:shadow-2xl transition-all">
               <div className="w-full h-64 bg-gray-100 rounded-3xl mb-8 overflow-hidden">
                 <img src={items.img} alt={items.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
@@ -145,7 +148,9 @@ const Resourcepage = () => {
                 Download PDF
               </button>
             </div>
-          ))}
+          ))} */}
+
+
         </div>
 
         <div className="bg-white rounded-[50px] p-8 md:p-16 shadow-2xl mb-24 border border-gray-100">

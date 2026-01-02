@@ -13,9 +13,7 @@ const AdvantageSection: React.FC = () => {
             <div className="container mx-auto px-4">
                 <div className="text-center mb-10">
                     <h2 className="text-3xl font-bold">
-                        FITI <span className="relative inline-block">Advantage
-                            <span className="absolute bottom-0 left-0 w-full h-1 bg-secondary"></span>
-                        </span>
+                        FITI Advantage
                     </h2>
                 </div>
                 <div className="flex flex-wrap justify-center gap-4">

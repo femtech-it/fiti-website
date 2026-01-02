@@ -42,7 +42,6 @@ const WhatWeDoSection: React.FC = () => {
                 <div className="text-center mb-12">
                     <h2 className="md:text-5xl text-4xl flex flex-col items-center">
                         What we do
-                        <span className="absolute bottom-1 left-0 w-full h-1.5 bg-secondary rounded-full"></span>
                     </h2>
                 </div>
 

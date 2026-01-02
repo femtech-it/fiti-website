@@ -1,9 +1,57 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { Button } from 'antd';
 import { LuCalendar } from "react-icons/lu";
 import { FaHandPointer } from "react-icons/fa";
 
+interface CourseData {
+    id: string;
+    title: string;
+    description: string;
+    duration: string;
+    image: string;
+    color: string;
+}
+
+const courses: CourseData[] = [
+    {
+        id: 'graphic-design',
+        title: 'GRAPHIC DESIGN',
+        description: 'Master the art of visual communication with FEMTECH\'s Graphic Design training, where creativity meets industry-ready skills for a successful design career.',
+        duration: '10 Weeks',
+        image: '/assets/design.png',
+        color: '#F67809'
+    },
+    {
+        id: 'website-design',
+        title: 'WEBSITE DESIGN',
+        description: 'Learn to create stunning, responsive websites with modern design principles and user experience best practices.',
+        duration: '12 Weeks',
+        image: '/assets/w2.jpg',
+        color: '#0010A3'
+    },
+    {
+        id: 'frontend-dev',
+        title: 'FRONTEND DEV',
+        description: 'Build interactive web applications using React, JavaScript, and modern frontend technologies.',
+        duration: '16 Weeks',
+        image: '/assets/w2.jpg',
+        color: '#0010A3'
+    },
+    {
+        id: 'data-science',
+        title: 'DATA SCIENCE',
+        description: 'Dive into data analysis, machine learning, and AI to unlock insights and drive business decisions.',
+        duration: '20 Weeks',
+        image: '/assets/w2.jpg',
+        color: '#0010A3'
+    }
+];
+
 const ReadyToElevateSection: React.FC = () => {
+    const [hoveredCard, setHoveredCard] = useState<string | null>('graphic-design');
+
     return (
         <section className="py-16 md:py-24 bg-white overflow-hidden">
             <div className="container mx-auto px-6 max-w-7xl">
@@ -14,78 +62,102 @@ const ReadyToElevateSection: React.FC = () => {
                     </h2>
                 </div>
 
-                {/* Left Side: Interactive Cards and Pillars */}
-                <div className="w-full lg:w-3/5 flex flex-col sm:flex-row items-center justify-center gap-8 relative">
-
-                    {/* Active Card: Graphic Design */}
-                    <div className="w-full sm:w-[320px] bg-white rounded-3xl shadow-2xl overflow-hidden border border-gray-100 flex flex-col transform transition-transform hover:scale-[1.02] z-10">
-                        <div className="h-48 overflow-hidden">
-                            <img src="/assets/design.png" alt="Graphic Design" className="w-full h-full object-cover" />
-                        </div>
-                        <div className="p-6 pb-8">
-                            <h3 className="text-xl font-bold text-gray-800 mb-2 tracking-tight">GRAPHIC DESIGN</h3>
-                            <p className="text-gray-500 text-sm leading-relaxed mb-6">
-                                Master the art of visual communication with FEMTECH's Graphic Design training, where creativity meets industry-ready skills for a successful design career.
-                            </p>
-                            <div className="flex items-center gap-2 text-gray-700 font-bold mb-8">
-                                <LuCalendar className="text-gray-900 text-xl" />
-                                <span className="text-base">10 Weeks</span>
-                            </div>
-                            <button className="w-full bg-[#F67809] text-white py-3.5 rounded-full font-bold shadow-lg hover:shadow-orange-200 transition-all flex items-center justify-center text-base">
-                                Download Brochure
-                            </button>
+                <div className="flex flex-col lg:flex-row gap-12 items-center">
+                    {/* Left Side: Interactive Cards */}
+                    <div className="w-full lg:w-3/5">
+                        <div className="flex gap-3 md:gap-4 h-[450px] md:h-[500px] justify-center">
+                            {courses.map((course) => (
+                                <motion.div
+                                    key={course.id}
+                                    className="relative cursor-pointer"
+                                    onMouseEnter={() => setHoveredCard(course.id)}
+                                    onMouseLeave={() => setHoveredCard('graphic-design')}
+                                    initial={false}
+                                    animate={{
+                                        width: hoveredCard === course.id ? '320px' : '64px',
+                                    }}
+                                    transition={{
+                                        duration: 0.5,
+                                        ease: [0.4, 0, 0.2, 1]
+                                    }}
+                                >
+                                    <AnimatePresence mode="wait">
+                                        {hoveredCard === course.id ? (
+                                            // Expanded Card View
+                                            <motion.div
+                                                key="card"
+                                                initial={{ opacity: 0 }}
+                                                animate={{ opacity: 1 }}
+                                                exit={{ opacity: 0 }}
+                                                transition={{ duration: 0.3 }}
+                                                className="w-full h-full bg-white rounded-3xl shadow-2xl overflow-hidden border border-gray-100 flex flex-col"
+                                            >
+                                                <div className="h-48 overflow-hidden">
+                                                    <img
+                                                        src={course.image}
+                                                        alt={course.title}
+                                                        className="w-full h-full object-cover"
+                                                    />
+                                                </div>
+                                                <div className="p-6 pb-8 flex flex-col flex-grow">
+                                                    <h3 className="text-xl font-bold text-gray-800 mb-2 tracking-tight">
+                                                        {course.title}
+                                                    </h3>
+                                                    <p className="text-gray-500 text-sm leading-relaxed mb-6 flex-grow">
+                                                        {course.description}
+                                                    </p>
+                                                    <div className="flex items-center gap-2 text-gray-700 font-bold mb-6">
+                                                        <LuCalendar className="text-gray-900 text-xl" />
+                                                        <span className="text-base">{course.duration}</span>
+                                                    </div>
+                                                    <button
+                                                        className="w-full text-white py-3.5 rounded-full font-bold shadow-lg hover:shadow-xl transition-all flex items-center justify-center text-base"
+                                                        style={{ backgroundColor: course.color }}
+                                                    >
+                                                        Download Brochure
+                                                    </button>
+                                                </div>
+                                            </motion.div>
+                                        ) : (
+                                            // Collapsed Pillar View
+                                            <motion.div
+                                                key="pillar"
+                                                initial={{ opacity: 0 }}
+                                                animate={{ opacity: 1 }}
+                                                exit={{ opacity: 0 }}
+                                                transition={{ duration: 0.3 }}
+                                                className="w-full h-full bg-[#0010A3] rounded-3xl flex flex-col items-center justify-center py-6 md:py-10 text-white relative overflow-hidden shadow-xl"
+                                            >
+                                                <FaHandPointer className="text-lg md:text-xl opacity-60 transform rotate-45 absolute top-6" />
+                                                <div className="flex items-center justify-center h-full">
+                                                    <span className="whitespace-nowrap font-black text-lg md:text-xl tracking-widest uppercase transform -rotate-90">
+                                                        {course.title}
+                                                    </span>
+                                                </div>
+                                                <div className="w-1 md:w-1.5 h-1/3 bg-white/20 rounded-full absolute bottom-6"></div>
+                                            </motion.div>
+                                        )}
+                                    </AnimatePresence>
+                                </motion.div>
+                            ))}
                         </div>
                     </div>
 
-                    {/* Inactive Pillars */}
-                    <div className="flex gap-3 md:gap-4 h-[350px] md:h-[440px]">
-                        {/* Pillar 1: Website Design */}
-                        <div className="w-12 md:w-16 h-full bg-[#0010A3] rounded-3xl flex flex-col items-center justify-between py-6 md:py-10 text-white relative group cursor-pointer overflow-hidden shadow-xl">
-                            <FaHandPointer className="text-lg md:text-xl opacity-60 transform rotate-45" />
-                            <span className="whitespace-nowrap font-black text-xl md:text-2xl tracking-widest uppercase transform -rotate-90 origin-center">
-                                WEBSITE DESIGN
-                            </span>
-                            <div className="w-1 md:w-1.5 h-1/2 bg-white/20 rounded-full absolute top-1/4 left-1.5"></div>
-                        </div>
-
-                        {/* Pillar 2: Frontend Dev */}
-                        <div className="w-12 md:w-16 h-full bg-[#0010A3] rounded-3xl flex flex-col items-center justify-between py-6 md:py-10 text-white relative group cursor-pointer overflow-hidden shadow-xl">
-                            <FaHandPointer className="text-lg md:text-xl opacity-60 transform rotate-45" />
-                            <span className="whitespace-nowrap font-black text-xl md:text-2xl tracking-widest uppercase transform -rotate-90 origin-center">
-                                FRONTEND DEV
-                            </span>
-                            <div className="w-1 md:w-1.5 h-1/2 bg-white/20 rounded-full absolute top-1/4 left-1.5"></div>
-                        </div>
-
-                        {/* Pillar 3: Data Science */}
-                        <div className="w-12 md:w-16 h-full bg-[#0010A3] rounded-3xl flex flex-col items-center justify-between py-6 md:py-10 text-white relative group cursor-pointer overflow-hidden shadow-xl">
-                            <FaHandPointer className="text-lg md:text-xl opacity-60 transform rotate-45" />
-                            <span className="whitespace-nowrap font-black text-xl md:text-2xl tracking-widest uppercase transform -rotate-90 origin-center">
-                                DATA SCIENCE
-                            </span>
-                            <div className="w-1 md:w-1.5 h-1/2 bg-white/20 rounded-full absolute top-1/4 left-1.5"></div>
-                        </div>
+                    {/* Right Side: Text and CTA */}
+                    <div className="w-full lg:w-2/5 text-center lg:text-left">
+                        <p className="text-gray-500 text-lg md:text-xl leading-relaxed mb-12 max-w-lg mx-auto lg:mx-0">
+                            If you're passionate about starting or growing a career in tech, FEMTECH is here for you. We provide hands-on, industry-relevant training, equipping you with the skills needed for the future of work while offering certifications and opportunities that open doors locally and globally.
+                        </p>
+                        <Link to="/courses">
+                            <Button
+                                type="primary"
+                                size="large"
+                                className="bg-[#F67809] border-none hover:bg-[#F67809]/90 h-16 px-14 text-xl font-bold rounded-2xl shadow-2xl transform transition-transform hover:scale-105"
+                            >
+                                Explore Our Courses
+                            </Button>
+                        </Link>
                     </div>
-
-                    {/* Overlapping Circles EA - Hidden on very small screens */}
-                    <div className="hidden sm:flex absolute left-[245px] top-[260px] md:top-[260px] z-20 bg-[#1A1A1A] rounded-2xl p-2 md:p-2.5 shadow-2xl scale-100 md:scale-110 border border-gray-800">
-                        <div className="w-9 h-9 md:w-11 md:h-11 bg-yellow-400 rounded-full flex items-center justify-center text-xl md:text-2xl font-black border-2 border-transparent">E</div>
-                        <div className="w-9 h-9 md:w-11 md:h-11 bg-green-500 rounded-full flex items-center justify-center text-xl md:text-2xl font-black text-white border-2 border-transparent -ml-2.5">A</div>
-                    </div>
-                </div>
-
-                {/* Right Side: Text and CTA */}
-                <div className="w-full lg:w-2/5 text-center lg:text-left pt-8">
-                    <p className="text-gray-500 text-lg md:text-xl leading-relaxed mb-12 max-w-lg mx-auto lg:mx-0">
-                        If you're passionate about starting or growing a career in tech, FEMTECH is here for you. We provide hands-on, industry-relevant training, equipping you with the skills needed for the future of work while offering certifications and opportunities that open doors locally and globally.
-                    </p>
-                    <Button
-                        type="primary"
-                        size="large"
-                        className="bg-[#F67809] border-none hover:bg-[#F67809]/90 h-16 px-14 text-xl font-bold rounded-2xl shadow-2xl transform transition-transform hover:scale-105"
-                    >
-                        Explore Our Courses
-                    </Button>
                 </div>
             </div>
         </section>

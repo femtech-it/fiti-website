@@ -1,8 +1,13 @@
 import { useState } from "react";
 import { useQuery, keepPreviousData } from "@tanstack/react-query";
+import { motion } from "framer-motion";
 import { fetchCourses } from "../api/coursesApi";
 import CourseCard from "./components/course-card";
 import { FaSpinner, FaChevronLeft, FaChevronRight, FaSearch } from "react-icons/fa";
+import SEO from "../components/SEO";
+import { PAGE_SEO, DEFAULT_SEO } from "../utils/seo-config";
+import { getBreadcrumbSchema } from "../utils/structured-data";
+import { pageTransition, staggerContainer, staggerItem } from "../utils/animations";
 
 const CoursesPages = () => {
   const [page, setPage] = useState(1);
@@ -48,11 +53,30 @@ const CoursesPages = () => {
     }
   };
 
+  const breadcrumbs = [
+    { name: "Home", url: "/" },
+    { name: "Courses", url: "/courses" }
+  ];
+
   return (
-    <section className="min-h-screen flex flex-col items-center bg-gray-50 pt-24 pb-20 gap-8 md:gap-16">
+    <motion.section
+      className="min-h-screen flex flex-col items-center bg-gray-50 pt-24 pb-20 gap-8 md:gap-16"
+      initial="hidden"
+      animate="visible"
+      exit="exit"
+      variants={pageTransition}
+    >
+      <SEO
+        title={PAGE_SEO.courses.title}
+        description={PAGE_SEO.courses.description}
+        keywords={PAGE_SEO.courses.keywords}
+        ogImage={PAGE_SEO.courses.ogImage}
+        canonical={`${DEFAULT_SEO.siteUrl}/courses`}
+        structuredData={getBreadcrumbSchema(breadcrumbs)}
+      />
       {/* Hero Section */}
       <div className="relative w-full overflow-hidden">
-        <img src="/assets/courseImg.png" alt="Courses Header" className="w-full h-[400px] md:h-[500px] object-cover" />
+        <img src="/assets/courseImg.png" alt="FITI IT Training Courses" className="w-full h-[400px] md:h-[500px] object-cover" />
         <div className="absolute inset-0 bg-black/60 flex flex-col justify-center items-center text-center text-white px-6">
           <h1 className="font-extrabold text-3xl md:text-5xl lg:text-6xl max-w-5xl mb-6 tracking-tight">
             Master In-Demand Tech Skills
@@ -240,7 +264,7 @@ const CoursesPages = () => {
           </div>
         </div>
       </div>
-    </section>
+    </motion.section>
   )
 }
 export default CoursesPages

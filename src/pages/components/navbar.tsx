@@ -14,7 +14,7 @@ const Navbar = () => {
         <div className="fixed w-[100%] top-0 left-0 z-50">
             <div className="bg-primary text-white py-1">
                 <Marquee>
-                    I can be a React component, multiple React components, or just some text.
+                    🎓 Enroll Now for Our Latest Tech Training Programs! • Government-Approved Certification • Flexible Schedules Available • Free Training Kits for All Students • Expert Instructors with Industry Experience • 100% Hands-On Practical Training • Job Placement Support • Contact Us: +(234) 705-996-1675 • Visit Our Tanke or Ibrahim Taiwo Campus Today! 🚀
                 </Marquee>
             </div>
             <nav className="flex justify-between items-center bg-white shadow py-4 px-6 md:px-10 flex-wrap relative">
@@ -27,9 +27,9 @@ const Navbar = () => {
                     <Link to={"/"} className="hover:text-secondary transition-colors">Home</Link>
                     <Link to={"/courses"} className="hover:text-secondary transition-colors">Courses</Link>
                     <Link to={"/resources"} className="hover:text-secondary transition-colors">Resources</Link>
-                    <Link to={"/student"} className="hover:text-secondary transition-colors">Student</Link>
+                    <Link to={"/contact/us"} className="hover:text-secondary transition-colors">Contact us</Link>
                     <Link to={"/about"} className="hover:text-secondary transition-colors">About</Link>
-                    <Link to={"/courses"} className="bg-secondary px-8 py-2 rounded-xl text-white hover:bg-opacity-90 transition-all">Enroll</Link>
+                    <Link to={"/registration"} className="bg-secondary px-8 py-2 rounded-xl text-white hover:bg-opacity-90 transition-all">Enroll</Link>
                 </div>
 
                 {/* Mobile Menu Icon */}
@@ -46,7 +46,7 @@ const Navbar = () => {
                     <Link to={"/resources"} onClick={toggleMenu} className="text-lg font-medium">Resources</Link>
                     <Link to={"/student"} onClick={toggleMenu} className="text-lg font-medium">Student</Link>
                     <Link to={"/about"} onClick={toggleMenu} className="text-lg font-medium">About</Link>
-                    <Link to={"/courses"} onClick={toggleMenu} className="bg-secondary px-10 py-3 rounded-xl text-white text-center font-bold">Enroll</Link>
+                    <Link to={"/registration"} onClick={toggleMenu} className="bg-secondary px-10 py-3 rounded-xl text-white text-center font-bold">Enroll</Link>
                 </div>
             </nav>
         </div>

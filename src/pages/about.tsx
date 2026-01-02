@@ -1,7 +1,16 @@
+import { motion } from "framer-motion";
+import SEO from "../components/SEO";
+import { PAGE_SEO, DEFAULT_SEO } from "../utils/seo-config";
+import { getOrganizationSchema, getLocalBusinessSchema } from "../utils/structured-data";
+import { pageTransition, fadeInUp, staggerContainer, staggerItem, viewportAnimation, defaultViewport } from "../utils/animations";
 import Team from "./components/team"
 
 const AboutUsPage = () => {
-
+  // Structured data for about page
+  const structuredData = [
+    getOrganizationSchema(),
+    getLocalBusinessSchema()
+  ];
 
   const opions = [
     {
@@ -51,9 +60,24 @@ const AboutUsPage = () => {
   ]
 
   return (
-    <section className="min-h-screen relative flex flex-col pt-24">
+    <motion.section
+      className="min-h-screen relative flex flex-col pt-24"
+      initial="hidden"
+      animate="visible"
+      exit="exit"
+      variants={pageTransition}
+    >
+      <SEO
+        title={PAGE_SEO.about.title}
+        description={PAGE_SEO.about.description}
+        keywords={PAGE_SEO.about.keywords}
+        ogImage={PAGE_SEO.about.ogImage}
+        canonical={`${DEFAULT_SEO.siteUrl}/about`}
+        structuredData={structuredData}
+      />
+
       <div className="w-full h-auto">
-        <img src="/assets/aboutuspic.png" className="w-full h-auto object-cover" alt="About Us" />
+        <img src="/assets/aboutuspic.png" className="w-full h-auto object-cover" alt="FITI Training Institute - About Us" />
       </div>
 
       <div className="flex justify-center -mt-6 md:-mt-10 mb-8 px-6">
@@ -84,14 +108,14 @@ const AboutUsPage = () => {
             {opions.map((option, index) => (
               <div key={index} className="flex justify-between md:justify-end items-center p-4 bg-gray-50 rounded-xl gap-4 md:gap-8 group hover:bg-white hover:shadow-md transition-all">
                 <p className="text-base md:text-right font-medium">{option.text}</p>
-                <img src={option.image} className="w-8 h-8 object-contain" alt="" />
+                <img src={option.image} className="w-8 h-8 object-contain" alt="FITI Benefit Icon" />
               </div>
             ))}
           </div>
           <div className="flex flex-col gap-6 w-full md:w-1/2">
             {rightoptiobnn.map((options, index) => (
               <div key={index} className="flex justify-between md:justify-start items-center p-4 bg-gray-50 rounded-xl gap-4 md:gap-8 group hover:bg-white hover:shadow-md transition-all">
-                <img src={options.image} className="w-8 h-8 object-contain order-2 md:order-1" alt="" />
+                <img src={options.image} className="w-8 h-8 object-contain order-2 md:order-1" alt="FITI Benefit Icon" />
                 <p className="text-base text-left font-medium order-1 md:order-2">{options.text}</p>
               </div>
             ))}
@@ -107,13 +131,13 @@ const AboutUsPage = () => {
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-8 items-center justify-items-center mb-16">
           {partnerImg.map((ImG, index) => (
             <div key={index} className="w-full max-w-[120px] filter grayscale hover:grayscale-0 transition-all duration-300">
-              <img src={ImG.img} alt="Partner" className="w-full h-auto object-contain" />
+              <img src={ImG.img} alt="FITI Training Partner Logo" className="w-full h-auto object-contain" />
             </div>
           ))}
         </div>
       </div>
 
-      <Team />
+      {/* <Team /> */}
 
       <div className="bg-[image:url(/assets/rect.png)] mt-20 bg-no-repeat bg-cover py-16 px-6 md:px-12 lg:px-20 overflow-hidden">
         <h1 className="text-3xl md:text-4xl font-bold text-center mb-12">Career at FEMTECH Training</h1>
@@ -129,14 +153,14 @@ const AboutUsPage = () => {
                 "Competitive benefits and flexible work arrangement"
               ].map((benefit, i) => (
                 <div key={i} className="flex items-center gap-4">
-                  <img src="../assets/noteicon.png" alt="" className="w-6 h-6" />
+                  <img src="../assets/noteicon.png" alt="Career Benefit Icon" className="w-6 h-6" />
                   <p className="font-medium">{benefit}</p>
                 </div>
               ))}
             </div>
           </div>
           <div className="w-full lg:w-1/2 flex justify-center">
-            <img src="../assets/woman.png" alt="Career" className="w-full max-w-md h-auto object-contain" />
+            <img src="../assets/woman.png" alt="Career Opportunities at FITI" className="w-full max-w-md h-auto object-contain" />
           </div>
         </div>
         <div className="flex justify-center mt-12">
@@ -145,7 +169,7 @@ const AboutUsPage = () => {
           </button>
         </div>
       </div>
-    </section>
+    </motion.section>
   )
 }
 

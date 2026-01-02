@@ -7,6 +7,8 @@ import { registerStudent, uploadDocument, fetchBranches } from "../api/registrat
 import type { RegistrationPayload } from "../api/registrationApi";
 import { toast } from "sonner";
 import { FaSpinner } from "react-icons/fa";
+import SEO from "../components/SEO";
+import { PAGE_SEO, DEFAULT_SEO } from "../utils/seo-config";
 
 const Registrationform = () => {
   const [searchParams] = useSearchParams();
@@ -136,9 +138,16 @@ const Registrationform = () => {
 
   return (
     <section className="min-h-screen bg-gray-50 pt-24 pb-20">
+      <SEO
+        title={PAGE_SEO.registration.title}
+        description={PAGE_SEO.registration.description}
+        keywords={PAGE_SEO.registration.keywords}
+        canonical={`${DEFAULT_SEO.siteUrl}/registration`}
+        noindex={PAGE_SEO.registration.noindex}
+      />
       <div className="relative mb-16">
         <div className="w-full h-[300px] md:h-[500px] overflow-hidden">
-          <img src="/assets/registartion_Img.png" alt="Registration Hero" className="w-full h-full object-cover" />
+          <img src="/assets/registartion_Img.png" alt="FITI Student Registration" className="w-full h-full object-cover" />
         </div>
         <div className="flex justify-center -mt-6 md:-mt-10">
           <button className="bg-primary py-3 md:py-4 px-10 md:px-20 rounded-tl-2xl rounded-br-2xl text-white font-bold text-xl md:text-3xl lg:text-4xl shadow-2xl">

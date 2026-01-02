@@ -120,7 +120,9 @@ const DisplayCourses = () => {
               </div>
             </div>
 
-            <div className="pt-20">
+
+            {/* Who will you learn with? */}
+            {/* <div className="pt-20">
               <div className="flex justify-center md:justify-start mb-10">
                 <button className="bg-primary py-3 px-10 rounded-2xl text-white font-bold text-lg shadow-xl">
                   Who will you learn with?
@@ -138,7 +140,9 @@ const DisplayCourses = () => {
                   </p>
                 </div>
               </div>
-            </div>
+            </div> */}
+
+
           </div>
 
           {/* Sticky Sidebar */}
@@ -187,9 +191,11 @@ const DisplayCourses = () => {
               </div>
             </div>
           </div>
+
         </div>
 
-        <div className="mt-32">
+        {/* Learning Outcome */}
+        {/* <div className="mt-32">
           <div className="flex justify-center mb-16">
             <button className="bg-primary py-4 px-12 md:px-20 rounded-tl-3xl rounded-br-3xl text-white font-black text-2xl md:text-4xl shadow-2xl">
               Learning Outcome
@@ -221,7 +227,7 @@ const DisplayCourses = () => {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
 
         <div className="mt-32">
           <div className="flex justify-center mb-16">

@@ -1,0 +1,14 @@
+# robots.txt for FITI Website
+
+# Allow all search engines to crawl the site
+User-agent: *
+Allow: /
+
+# Disallow crawling of API endpoints (if any)
+Disallow: /api/
+
+# Sitemap location
+Sitemap: https://www.fiti.ng/sitemap.xml
+
+# Crawl-delay (optional, helps prevent server overload)
+# Crawl-delay: 1
