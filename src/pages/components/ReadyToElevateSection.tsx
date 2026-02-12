@@ -4,53 +4,104 @@ import { Link } from 'react-router-dom';
 import { Button } from 'antd';
 import { LuCalendar } from "react-icons/lu";
 import { FaHandPointer } from "react-icons/fa";
+import { fetchCourses, type Course } from '../../api/coursesApi';
+import { useQuery } from '@tanstack/react-query';
+import { FaArrowRight } from "react-icons/fa";
 
 interface CourseData {
-    id: string;
+    id: number;
     title: string;
     description: string;
     duration: string;
-    image: string;
     color: string;
 }
 
-const courses: CourseData[] = [
-    {
-        id: 'graphic-design',
-        title: 'GRAPHIC DESIGN',
-        description: 'Master the art of visual communication with FEMTECH\'s Graphic Design training, where creativity meets industry-ready skills for a successful design career.',
-        duration: '10 Weeks',
-        image: '/assets/design.png',
-        color: '#F67809'
-    },
-    {
-        id: 'website-design',
-        title: 'WEBSITE DESIGN',
-        description: 'Learn to create stunning, responsive websites with modern design principles and user experience best practices.',
-        duration: '12 Weeks',
-        image: '/assets/w2.jpg',
-        color: '#0010A3'
-    },
-    {
-        id: 'frontend-dev',
-        title: 'FRONTEND DEV',
-        description: 'Build interactive web applications using React, JavaScript, and modern frontend technologies.',
-        duration: '16 Weeks',
-        image: '/assets/w2.jpg',
-        color: '#0010A3'
-    },
-    {
-        id: 'data-science',
-        title: 'DATA SCIENCE',
-        description: 'Dive into data analysis, machine learning, and AI to unlock insights and drive business decisions.',
-        duration: '20 Weeks',
-        image: '/assets/w2.jpg',
-        color: '#0010A3'
+// Improved Fisher-Yates shuffle for better randomness
+const getRandomCourses = (courses: Course[], count: number): CourseData[] => {
+    const shuffled = [...courses];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
     }
-];
+    return shuffled.slice(0, count).map((course, index) => ({
+        id: course.id,
+        title: (course.displayName || course.name).toUpperCase(),
+        description: course.description || 'Gain hands-on experience with industry-relevant skills. Expert-led training with practical projects and certification.',
+        duration: `${course.duration} Weeks`,
+        color: index % 2 === 0 ? '#F67809' : '#0010A3'
+    }));
+};
 
 const ReadyToElevateSection: React.FC = () => {
-    const [hoveredCard, setHoveredCard] = useState<string | null>('graphic-design');
+    const [hoveredCard, setHoveredCard] = useState<number | null>(null);
+
+    const { data, isLoading, isError } = useQuery({
+        queryKey: ['random-courses'],
+        queryFn: () => fetchCourses({ limit: 50 }), // Fetching 50 courses for a good random pool
+        staleTime: 0,
+    });
+
+    // Memoize the random selection to avoid re-shuffling on every render
+    const courses = React.useMemo(() => {
+        const hasResults = data?.data.result && data.data.result.length > 0;
+
+        if (isError || !hasResults) {
+            // Fallback courses if API fails or returns no results
+            return [
+                {
+                    id: 1,
+                    title: 'GRAPHIC DESIGN',
+                    description: 'Master the art of visual communication with FEMTECH\'s Graphic Design training, where creativity meets industry-ready skills for a successful design career.',
+                    duration: '10 Weeks',
+                    color: '#F67809'
+                },
+                {
+                    id: 2,
+                    title: 'WEBSITE DESIGN',
+                    description: 'Learn to create stunning, responsive websites with modern design principles and user experience best practices.',
+                    duration: '12 Weeks',
+                    color: '#0010A3'
+                },
+                {
+                    id: 3,
+                    title: 'FRONTEND DEV',
+                    description: 'Build interactive web applications using React, JavaScript, and modern frontend technologies.',
+                    duration: '16 Weeks',
+                    color: '#F67809'
+                },
+                {
+                    id: 4,
+                    title: 'DATA SCIENCE',
+                    description: 'Dive into data analysis, machine learning, and AI to unlock insights and drive business decisions.',
+                    duration: '20 Weeks',
+                    color: '#0010A3'
+                }
+            ];
+        }
+        return getRandomCourses(data.data.result, 4);
+    }, [data, isError]);
+
+    // Set first course as default hovered once courses are loaded
+    React.useEffect(() => {
+        if (courses.length > 0 && hoveredCard === null) {
+            setHoveredCard(courses[0].id);
+        }
+    }, [courses]);
+
+    if (isLoading) {
+        return (
+            <section className="py-16 md:py-24 bg-white overflow-hidden">
+                <div className="container mx-auto px-6 max-w-7xl h-[400px] flex items-center justify-center">
+                    <div className="text-center">
+                        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
+                        <p className="text-gray-500 text-xl">Loading courses...</p>
+                    </div>
+                </div>
+            </section>
+        );
+    }
+
+    if (courses.length === 0) return null;
 
     return (
         <section className="py-16 md:py-24 bg-white overflow-hidden">
@@ -71,7 +122,7 @@ const ReadyToElevateSection: React.FC = () => {
                                     key={course.id}
                                     className="relative cursor-pointer"
                                     onMouseEnter={() => setHoveredCard(course.id)}
-                                    onMouseLeave={() => setHoveredCard('graphic-design')}
+                                    onMouseLeave={() => setHoveredCard(courses[0]?.id || null)}
                                     initial={false}
                                     animate={{
                                         width: hoveredCard === course.id ? '320px' : '64px',
@@ -92,13 +143,7 @@ const ReadyToElevateSection: React.FC = () => {
                                                 transition={{ duration: 0.3 }}
                                                 className="w-full h-full bg-white rounded-3xl shadow-2xl overflow-hidden border border-gray-100 flex flex-col"
                                             >
-                                                <div className="h-48 overflow-hidden">
-                                                    <img
-                                                        src={course.image}
-                                                        alt={course.title}
-                                                        className="w-full h-full object-cover"
-                                                    />
-                                                </div>
+                                                <div className="h-4 w-full" style={{ backgroundColor: course.color }}></div>
                                                 <div className="p-6 pb-8 flex flex-col flex-grow">
                                                     <h3 className="text-xl font-bold text-gray-800 mb-2 tracking-tight">
                                                         {course.title}
@@ -110,12 +155,13 @@ const ReadyToElevateSection: React.FC = () => {
                                                         <LuCalendar className="text-gray-900 text-xl" />
                                                         <span className="text-base">{course.duration}</span>
                                                     </div>
-                                                    <button
-                                                        className="w-full text-white py-3.5 rounded-full font-bold shadow-lg hover:shadow-xl transition-all flex items-center justify-center text-base"
-                                                        style={{ backgroundColor: course.color }}
+                                                    <Link
+                                                        to={`/course/${course.id}`}
+                                                        className="bg-gradient-to-r from-blue-500 to-blue-700 text-white px-6 py-3.5 rounded-xl font-bold text-sm shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 group/btn no-underline"
                                                     >
-                                                        Download Brochure
-                                                    </button>
+                                                        View Course
+                                                        <FaArrowRight className="group-hover/btn:translate-x-1 transition-transform" />
+                                                    </Link>
                                                 </div>
                                             </motion.div>
                                         ) : (

@@ -48,17 +48,19 @@ interface FetchCoursesParams {
 }
 
 export const fetchCourses = async (params: FetchCoursesParams = {}): Promise<CoursesResponse> => {
-  const { page = 1, limit = 10, search, studentLevel, minPrice, maxPrice, duration } = params;
+  const { page = 1, limit = 10, ...rest } = params;
+
+  // Clean up params to only send defined values
+  const cleanParams: any = { page, limit };
+  Object.keys(rest).forEach(key => {
+    const value = (rest as any)[key];
+    if (value !== undefined && value !== null && value !== "") {
+      cleanParams[key] = value;
+    }
+  });
+
   const response = await api.get(`/courses`, {
-    params: {
-      page,
-      limit,
-      search,
-      studentLevel,
-      minPrice,
-      maxPrice,
-      duration,
-    },
+    params: cleanParams,
   });
   return response.data;
 };

@@ -2,8 +2,7 @@ import { motion } from "framer-motion";
 import SEO from "../components/SEO";
 import { PAGE_SEO, DEFAULT_SEO } from "../utils/seo-config";
 import { getOrganizationSchema, getLocalBusinessSchema } from "../utils/structured-data";
-import { pageTransition, fadeInUp, staggerContainer, staggerItem, viewportAnimation, defaultViewport } from "../utils/animations";
-import Team from "./components/team"
+import { pageTransition } from "../utils/animations";
 
 const AboutUsPage = () => {
   // Structured data for about page

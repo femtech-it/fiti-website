@@ -9,6 +9,8 @@ import { toast } from "sonner";
 import { FaSpinner } from "react-icons/fa";
 import SEO from "../components/SEO";
 import { PAGE_SEO, DEFAULT_SEO } from "../utils/seo-config";
+import { motion } from "framer-motion";
+import { pageTransition } from "../utils/animations";
 
 const Registrationform = () => {
   const [searchParams] = useSearchParams();
@@ -137,7 +139,13 @@ const Registrationform = () => {
   };
 
   return (
-    <section className="min-h-screen bg-gray-50 pt-24 pb-20">
+    <motion.section
+      className="min-h-screen bg-gray-50 pt-24 pb-20"
+      initial="hidden"
+      animate="visible"
+      exit="exit"
+      variants={pageTransition}
+    >
       <SEO
         title={PAGE_SEO.registration.title}
         description={PAGE_SEO.registration.description}
@@ -306,7 +314,7 @@ const Registrationform = () => {
           </form>
         </div>
       </div>
-    </section>
+    </motion.section>
   )
 }
 

@@ -1,6 +1,6 @@
 import { MdFacebook } from "react-icons/md";
 import { Link } from "react-router-dom"
-import { BsInstagram } from "react-icons/bs";
+import { BsInstagram, BsYoutube } from "react-icons/bs";
 import { BsLinkedin } from "react-icons/bs";
 
 const Footer = () => {
@@ -12,9 +12,10 @@ const Footer = () => {
                     At FEMTECH Training, we equip individuals with cutting-edge digital skills, fostering innovation, career growth, and economic empowerment in the ever-evolving tech landscape
                 </p>
                 <div className="flex items-center gap-4">
-                    <Link to={""} className="text-primary text-2xl hover:text-secondary transition-colors"><MdFacebook /></Link>
-                    <Link to={""} className="text-primary text-2xl hover:text-secondary transition-colors"><BsInstagram /></Link>
-                    <Link to={""} className="text-primary text-2xl hover:text-secondary transition-colors"><BsLinkedin /></Link>
+                    <Link to={"https://www.facebook.com/share/1HkYYdUfyh/"} target="_blank" className="text-primary text-2xl hover:text-secondary transition-colors"><MdFacebook /></Link>
+                    <Link to={"https://www.instagram.com/femtechitcentre?igsh=ZHE3eGEzdXZmcjNw"} target="_blank" className="text-primary text-2xl hover:text-secondary transition-colors"><BsInstagram /></Link>
+                    <Link to={"https://www.linkedin.com/company/femtech-it-training-centre/"} target="_blank" className="text-primary text-2xl hover:text-secondary transition-colors"><BsLinkedin /></Link>
+                    <Link to={"https://youtube.com/@femtechtraining?si=xoUqzkBPm_ozMGvQ"} target="_blank" className="text-primary text-2xl hover:text-secondary transition-colors"><BsYoutube /></Link>
                 </div>
             </div>
 
@@ -24,10 +25,10 @@ const Footer = () => {
                     <li><Link to={"/about"} className="text-gray-600 hover:text-secondary transition-colors">About us</Link></li>
                     <li><Link to={"/courses"} className="text-gray-600 hover:text-secondary transition-colors">Courses</Link></li>
                     <li><Link to={"/terms"} className="text-gray-600 hover:text-secondary transition-colors">Terms & Condition</Link></li>
-                    <li><Link to={""} className="text-gray-600 hover:text-secondary transition-colors">FAQ</Link></li>
-                    <li><Link to={"/resources"} className="text-gray-600 hover:text-secondary transition-colors">Resources</Link></li>
+                    <li><Link to={"/about"} className="text-gray-600 hover:text-secondary transition-colors">FAQ</Link></li>
+                    {/* <li><Link to={"/resources"} className="text-gray-600 hover:text-secondary transition-colors">Resources</Link></li>
                     <li><Link to={"/student"} className="text-gray-600 hover:text-secondary transition-colors">Students</Link></li>
-                    <li><Link to={"/gallery"} className="text-gray-600 hover:text-secondary transition-colors">Gallery</Link></li>
+                    <li><Link to={"/gallery"} className="text-gray-600 hover:text-secondary transition-colors">Gallery</Link></li> */}
                     <li><Link to={""} className="text-gray-600 hover:text-secondary transition-colors">Privacy Policy</Link></li>
                 </ul>
             </div>
@@ -36,8 +37,9 @@ const Footer = () => {
                 <h1 className="text-2xl font-bold text-primary">Contact</h1>
                 <ul className="flex flex-col gap-4">
                     <li className="text-gray-600 leading-relaxed">
-                        Ilorin Office: Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus magnam modi molestiae placeat culpa blanditiis.
+                        28, University Road, Tanke. Ilorin
                     </li>
+                    <li className="text-gray-600 leading-relaxed">158, Ibrahim Taiwo Road, Opposite Femtech PC Clinic Ilorin</li>
                     <li className="font-semibold text-primary">fiti@femtechtraining.com</li>
                     <li className="font-semibold text-primary">+(234) 705-996-1675</li>
                 </ul>

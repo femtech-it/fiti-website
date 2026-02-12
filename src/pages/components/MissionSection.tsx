@@ -13,7 +13,7 @@ const MissionSection: React.FC = () => {
                                 <span className="absolute -bottom-2 left-1/2 md:left-0 w-24 h-1 bg-secondary -translate-x-1/2 md:translate-x-0"></span>
                             </h2>
                             <p className="text-gray-500 text-base md:text-lg lg:text-xl leading-relaxed">
-                                Our mission is to provide high-quality, hands-on training in technology and digital skills, empowering individuals to build successful careers in the tech industry. We are dedicated to bridging the digital skills gap through innovative education, mentorship, and career development, ensuring our learners are equipped with industry-relevant expertise to thrive in the modern workforce.
+                                To provide high-quality, hands-on training in technology and digital skills, empowering individuals to build successful careers in the tech industry. We are dedicated to bridging the digital skills gap through innovative education, mentorship, and career development, ensuring our learners are equipped with industry-relevant expertise to thrive in the modern workforce.
                             </p>
                         </div>
                     </div>

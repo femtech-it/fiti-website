@@ -1,3 +1,8 @@
+import { motion } from "framer-motion";
+import { pageTransition, staggerContainer, fadeInUp } from "../utils/animations";
+import SEO from "../components/SEO";
+import { PAGE_SEO, DEFAULT_SEO } from "../utils/seo-config";
+
 const StudentProject = () => {
 
   const studentProjects = [
@@ -40,7 +45,20 @@ const StudentProject = () => {
   ];
 
   return (
-    <section className="bg-gray-50 pt-24 pb-20">
+    <motion.section
+      className="bg-gray-50 pt-24 pb-20"
+      initial="hidden"
+      animate="visible"
+      exit="exit"
+      variants={pageTransition}
+    >
+      <SEO
+        title={PAGE_SEO.studentProjects.title}
+        description={PAGE_SEO.studentProjects.description}
+        keywords={PAGE_SEO.studentProjects.keywords}
+        canonical={`${DEFAULT_SEO.siteUrl}/student-projects`}
+        ogImage={PAGE_SEO.studentProjects.ogImage}
+      />
       <div className="relative mb-16">
         <div className="w-full h-[300px] md:h-[500px] overflow-hidden">
           <img src="/assets/studentimg.png" alt="Student Projects Hero" className="w-full h-full object-cover" />
@@ -60,10 +78,17 @@ const StudentProject = () => {
         <div className="h-1.5 w-24 bg-secondary mx-auto rounded-full mt-4" />
       </div>
 
-      <div className="container mx-auto px-6 max-w-6xl space-y-20">
+      <motion.div
+        className="container mx-auto px-6 max-w-6xl space-y-20"
+        variants={staggerContainer}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+      >
         {studentProjects.map((project, index) => (
-          <div
+          <motion.div
             key={index}
+            variants={fadeInUp}
             className={`flex flex-col md:flex-row ${index % 2 === 1 ? 'md:flex-row-reverse' : ''} items-center gap-12`}
           >
             <div className="w-full md:w-1/2 group">
@@ -93,10 +118,10 @@ const StudentProject = () => {
                 </button>
               </div>
             </div>
-          </div>
+          </motion.div>
         ))}
-      </div>
-    </section>
+      </motion.div>
+    </motion.section>
   )
 }
 

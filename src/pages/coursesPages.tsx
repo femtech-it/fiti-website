@@ -7,7 +7,7 @@ import { FaSpinner, FaChevronLeft, FaChevronRight, FaSearch } from "react-icons/
 import SEO from "../components/SEO";
 import { PAGE_SEO, DEFAULT_SEO } from "../utils/seo-config";
 import { getBreadcrumbSchema } from "../utils/structured-data";
-import { pageTransition, staggerContainer, staggerItem } from "../utils/animations";
+import { pageTransition } from "../utils/animations";
 
 const CoursesPages = () => {
   const [page, setPage] = useState(1);
@@ -220,7 +220,7 @@ const CoursesPages = () => {
                       <CourseCard
                         key={course.id}
                         id={course.id}
-                        name={course.name}
+                        name={course.displayName as string}
                         description={course.description}
                         price={course.price}
                         duration={course.duration}

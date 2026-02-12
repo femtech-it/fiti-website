@@ -1,3 +1,8 @@
+import { motion } from "framer-motion";
+import { pageTransition, staggerContainer, fadeInUp } from "../utils/animations";
+import SEO from "../components/SEO";
+import { PAGE_SEO, DEFAULT_SEO } from "../utils/seo-config";
+
 const Photogallery = () => {
   const DisplayFirstImg = {
     img: "../assets/galleryImg.png",
@@ -10,7 +15,20 @@ const Photogallery = () => {
   const repeatedSecondIMG = Array.from({ length: 16 }, () => DisplaySecondImg);
 
   return (
-    <section className="bg-gray-50 pt-24 pb-20">
+    <motion.section
+      className="bg-gray-50 pt-24 pb-20"
+      initial="hidden"
+      animate="visible"
+      exit="exit"
+      variants={pageTransition}
+    >
+      <SEO
+        title={PAGE_SEO.gallery.title}
+        description={PAGE_SEO.gallery.description}
+        keywords={PAGE_SEO.gallery.keywords}
+        canonical={`${DEFAULT_SEO.siteUrl}/gallery`}
+        ogImage={PAGE_SEO.gallery.ogImage}
+      />
       <div className="relative mb-16">
         <div className="w-full h-[300px] md:h-[500px] overflow-hidden">
           <img src="/assets/gallery_img.png" alt="Gallery Hero" className="w-full h-full object-cover" />
@@ -26,13 +44,23 @@ const Photogallery = () => {
         {/* Training Sessions */}
         <div className="flex flex-col items-center gap-8">
           <h1 className="text-3xl md:text-5xl font-black text-center text-gray-800">Training Sessions</h1>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 w-full place-items-center">
+          <motion.div
+            className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 w-full place-items-center"
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
             {repeatedIMG.map((item, index) => (
-              <div key={index} className="w-full aspect-square overflow-hidden rounded-2xl shadow-md hover:scale-105 transition-transform">
+              <motion.div
+                key={index}
+                variants={fadeInUp}
+                className="w-full aspect-square overflow-hidden rounded-2xl shadow-md hover:scale-105 transition-transform"
+              >
                 <img src={item.img} alt={`Training ${index}`} className="w-full h-full object-cover" />
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
           <button className="bg-secondary hover:bg-opacity-90 text-white font-bold py-3 px-12 rounded-xl transition-transform hover:scale-105 shadow-lg">
             View More
           </button>
@@ -41,13 +69,23 @@ const Photogallery = () => {
         {/* Event and Workshop */}
         <div className="flex flex-col items-center gap-8">
           <h1 className="text-3xl md:text-5xl font-black text-center text-gray-800">Event and Workshop</h1>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 w-full place-items-center">
+          <motion.div
+            className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 w-full place-items-center"
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
             {repeatedSecondIMG.map((item, index) => (
-              <div key={index} className="w-full aspect-square overflow-hidden rounded-2xl shadow-md hover:scale-105 transition-transform">
+              <motion.div
+                key={index}
+                variants={fadeInUp}
+                className="w-full aspect-square overflow-hidden rounded-2xl shadow-md hover:scale-105 transition-transform"
+              >
                 <img src={item.img} alt={`Event ${index}`} className="w-full h-full object-cover" />
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
           <button className="bg-secondary hover:bg-opacity-90 text-white font-bold py-3 px-12 rounded-xl transition-transform hover:scale-105 shadow-lg">
             View More
           </button>
@@ -97,7 +135,7 @@ const Photogallery = () => {
           </div>
         </div>
       </div>
-    </section>
+    </motion.section>
   )
 }
 

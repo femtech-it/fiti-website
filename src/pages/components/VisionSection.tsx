@@ -26,7 +26,7 @@ const VisionSection: React.FC = () => {
                                 <span className="absolute -bottom-2 left-1/2 md:left-0 w-24 h-1 bg-secondary -translate-x-1/2 md:translate-x-0"></span>
                             </h2>
                             <p className="text-gray-500 text-base md:text-lg lg:text-xl leading-relaxed">
-                                Our vision is to be a leading technology training institute, fostering a world where individuals, regardless of background, have equal access to tech education and opportunities. We aim to create a generation of skilled innovators and professionals who will drive technological advancement, entrepreneurship, and economic growth globally.
+                                To be a leading technology training institute, fostering a world where individuals, regardless of background, have equal access to tech education and opportunities. We aim to create a generation of skilled innovators and professionals who will drive technological advancement, entrepreneurship, and economic growth globally.
                             </p>
                         </div>
                     </div>

@@ -6,6 +6,7 @@ const AdvantageSection: React.FC = () => {
         { label: 'Smart Classroom', color: 'bg-primary' },
         { label: 'Free Internet', color: 'bg-secondary' },
         { label: 'Flexible Payment', color: 'bg-primary' },
+        { label: 'Flexible Schedule', color: 'bg-secondary' },
     ];
 
     return (
@@ -13,7 +14,7 @@ const AdvantageSection: React.FC = () => {
             <div className="container mx-auto px-4">
                 <div className="text-center mb-10">
                     <h2 className="text-3xl font-bold">
-                        FITI Advantage
+                        Institute Advantage
                     </h2>
                 </div>
                 <div className="flex flex-wrap justify-center gap-4">

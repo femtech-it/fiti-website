@@ -1,8 +1,17 @@
 import Graduatecard from "./components/graduate-card"
+import SEO from "../components/SEO";
+import { PAGE_SEO, DEFAULT_SEO } from "../utils/seo-config";
 
 const MeetGraduant = () => {
   return (
     <section className="bg-gray-50 pt-24 pb-20">
+      <SEO
+        title={PAGE_SEO.meetGraduates.title}
+        description={PAGE_SEO.meetGraduates.description}
+        keywords={PAGE_SEO.meetGraduates.keywords}
+        canonical={`${DEFAULT_SEO.siteUrl}/meet-graduates`}
+        ogImage={PAGE_SEO.meetGraduates.ogImage}
+      />
       <div className="relative mb-16">
         <div className="w-full h-[300px] md:h-[500px] overflow-hidden">
           <img src="/assets/granduant2.png" alt="Graduates Hero" className="w-full h-full object-cover" />

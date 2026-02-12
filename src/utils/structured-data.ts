@@ -3,7 +3,7 @@ import { DEFAULT_SEO } from './seo-config';
 export interface Course {
   name: string;
   description: string;
-  provider: string;
+  provider?: string;
   url?: string;
 }
 
@@ -11,7 +11,7 @@ export interface Course {
 export const getOrganizationSchema = () => ({
   "@context": "https://schema.org",
   "@type": "EducationalOrganization",
-  "name": DEFAULT_SEO.organizationName, 
+  "name": DEFAULT_SEO.organizationName,
   "alternateName": "FITI",
   "url": DEFAULT_SEO.siteUrl,
   "logo": `${DEFAULT_SEO.siteUrl}${DEFAULT_SEO.organizationLogo}`,

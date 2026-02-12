@@ -1,3 +1,6 @@
+import SEO from "../components/SEO";
+import { PAGE_SEO, DEFAULT_SEO } from "../utils/seo-config";
+
 const employers = ["NGOs", "Startups", "Tech Companies", "Government Organisations", "Agencies and Corporates"];
 const talents = [
   "UI/UX Designer",
@@ -49,6 +52,13 @@ const rightoptiobnn = [
 const HireGraduate = () => {
   return (
     <section className="bg-gray-50 pt-24 pb-20">
+      <SEO
+        title={PAGE_SEO.hireGraduate.title}
+        description={PAGE_SEO.hireGraduate.description}
+        keywords={PAGE_SEO.hireGraduate.keywords}
+        canonical={`${DEFAULT_SEO.siteUrl}/hire-graduate`}
+        ogImage={PAGE_SEO.hireGraduate.ogImage}
+      />
       <div className="relative mb-16">
         <div className="w-full h-[300px] md:h-[500px] overflow-hidden">
           <img src="/assets/graduateImg.png" alt="Graduate Hero" className="w-full h-full object-cover" />

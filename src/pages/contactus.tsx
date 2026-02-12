@@ -148,7 +148,15 @@ const Contactus = () => {
             <Button
               htmlType="submit"
               disabled={enquiryMutation.isPending}
-              className="bg-secondary border-none hover:scale-105 transition-transform h-14 px-16 text-xl font-bold rounded-2xl shadow-xl text-white disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
+              className="bg-secondary border-none hover:scale-105 transition-transform rounded-2xl shadow-xl text-white disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-3"
+              style={{
+                height: '60px',
+                width: '100%',
+                maxWidth: '350px',
+                fontSize: '20px',
+                fontWeight: 'bold',
+                padding: '0 32px'
+              }}
             >
               {enquiryMutation.isPending ? (
                 <>

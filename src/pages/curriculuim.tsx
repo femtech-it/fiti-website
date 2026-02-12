@@ -1,6 +1,16 @@
+import SEO from "../components/SEO";
+import { PAGE_SEO, DEFAULT_SEO } from "../utils/seo-config";
+
 const Curriculum = () => {
   return (
     <section className="bg-gray-50 pt-24 pb-20">
+      <SEO
+        title={PAGE_SEO.curriculum.title}
+        description={PAGE_SEO.curriculum.description}
+        keywords={PAGE_SEO.curriculum.keywords}
+        canonical={`${DEFAULT_SEO.siteUrl}/curriculum`}
+        ogImage={PAGE_SEO.curriculum.ogImage}
+      />
       <div className="relative mb-16">
         <div className="w-full h-[300px] md:h-[500px] overflow-hidden">
           <img src="/assets/d_curriculum.png" alt="Curriculum Hero" className="w-full h-full object-cover" />

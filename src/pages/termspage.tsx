@@ -1,3 +1,6 @@
+import SEO from "../components/SEO";
+import { PAGE_SEO, DEFAULT_SEO } from "../utils/seo-config";
+
 const terms = [
   {
     title: "Attendance Requirement",
@@ -39,6 +42,13 @@ const terms = [
 const Termspage = () => {
   return (
     <section className="bg-gray-50 pt-24 pb-20">
+      <SEO
+        title={PAGE_SEO.terms.title}
+        description={PAGE_SEO.terms.description}
+        keywords={PAGE_SEO.terms.keywords}
+        canonical={`${DEFAULT_SEO.siteUrl}/terms`}
+        noindex={PAGE_SEO.terms.noindex}
+      />
       <div className="relative mb-16">
         <div className="w-full h-[300px] md:h-[500px] overflow-hidden">
           <img src="/assets/termsImg.png" alt="Terms Hero" className="w-full h-full object-cover" />

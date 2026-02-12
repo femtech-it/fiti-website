@@ -6,6 +6,9 @@ import { PiStudent } from "react-icons/pi";
 import { BsGraphUpArrow } from "react-icons/bs";
 import { MdOutlineDateRange } from "react-icons/md";
 import { IoPricetagsOutline } from "react-icons/io5";
+import SEO from "../components/SEO";
+import { DEFAULT_SEO } from "../utils/seo-config";
+import { getCourseSchema } from "../utils/structured-data";
 
 const DisplayCourses = () => {
   const { id } = useParams<{ id: string }>();
@@ -38,7 +41,14 @@ const DisplayCourses = () => {
   }
 
   return (
-    <section className="bg-gray-50 pt-24 pb-20 overflow-x-hidden">
+    <section className="bg-gray-50 pt-30 pb-20 overflow-x-hidden">
+      <SEO
+        title={course.displayName || course.name}
+        description={course.description || `Learn ${course.displayName || course.name} at FITI. Comprehensive training with expert instructors and hands-on projects.`}
+        keywords={`${course.name}, ${course.displayName}, IT training, tech course, FITI`}
+        canonical={`${DEFAULT_SEO.siteUrl}/course/${course.id}`}
+        structuredData={getCourseSchema(course)}
+      />
       <div className="w-full px-6 md:px-12">
         <div className="flex flex-col lg:flex-row gap-12 items-start relative">
 
@@ -47,16 +57,16 @@ const DisplayCourses = () => {
             <div className="space-y-4">
               <p className="text-primary font-bold text-sm uppercase tracking-wider">Explore Our Courses / Courses Overview</p>
               <h1 className="text-3xl md:text-5xl font-black text-gray-800 leading-tight">
-                {course.name}
+                {course.displayName}
               </h1>
-              <p className="text-lg md:text-xl text-gray-600 leading-relaxed max-w-3xl">
+              {/* <p className="text-lg md:text-xl text-gray-600 leading-relaxed max-w-3xl">
                 {course.description}
-              </p>
+              </p> */}
             </div>
 
             <div className="bg-white rounded-[40px] overflow-hidden border border-gray-100 group">
               <div className="w-full h-[250px] md:h-[400px] overflow-hidden">
-                <img src="/assets/laptop.png" alt={course.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                <img src="/assets/laptop.png" alt={course.displayName as string} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
               </div>
 
               <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-gray-100 p-6 md:p-10">
@@ -79,7 +89,7 @@ const DisplayCourses = () => {
                     <FaChalkboardTeacher className="text-2xl" />
                   </div>
                   <p className="text-xs text-gray-400 font-bold uppercase mb-1">Classes</p>
-                  <p className="font-bold text-gray-800">{course.classType?.length > 0 ? course.classType.join(", ") : "Online/Physical"}</p>
+                  <p className="font-bold text-gray-800">{course.classType?.length > 0 ? course.classType[0].label : "Online/Physical"}</p>
                 </div>
                 <div className="p-4 flex flex-col items-center text-center border-none md:border-l">
                   <div className="bg-primary/5 p-3 rounded-2xl mb-3 text-primary">
@@ -110,7 +120,7 @@ const DisplayCourses = () => {
                     <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 text-gray-700">
                       {course.courseOutlines.map((item: any, i: number) => (
                         <li key={i} className="flex gap-3 items-center bg-white/50 p-4 rounded-2xl shadow-sm">
-                          <span className="w-8 h-8 bg-primary text-white flex items-center justify-center rounded-lg font-black text-xs shrink-0">{i + 1}</span>
+                          <span className="w-2 h-2 bg-primary text-white flex items-center justify-center rounded-full font-black text-xs shrink-0"></span>
                           <span className="text-sm font-medium">{typeof item === 'string' ? item : item.title || item.description}</span>
                         </li>
                       ))}
@@ -149,7 +159,7 @@ const DisplayCourses = () => {
           <div className="lg:w-1/3 w-full lg:sticky lg:top-32">
             <div className="bg-white rounded-[40px] shadow-2xl p-8 md:p-10 border border-gray-100">
               <h2 className="text-2xl md:text-3xl font-black text-gray-800 leading-tight mb-6">
-                {course.name}
+                {course.displayName}
               </h2>
 
               {course.requirements && course.requirements.length > 0 && (
@@ -195,7 +205,7 @@ const DisplayCourses = () => {
         </div>
 
         {/* Learning Outcome */}
-        {/* <div className="mt-32">
+        <div className="mt-32">
           <div className="flex justify-center mb-16">
             <button className="bg-primary py-4 px-12 md:px-20 rounded-tl-3xl rounded-br-3xl text-white font-black text-2xl md:text-4xl shadow-2xl">
               Learning Outcome
@@ -214,7 +224,7 @@ const DisplayCourses = () => {
                 ]).map((item: any, i: number) => (
                   <div key={i} className="flex gap-6 group">
                     <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center shrink-0 shadow-lg border border-gray-100 group-hover:bg-primary group-hover:text-white transition-all">
-                      <span className="font-black text-xl">{i + 1}</span>
+                      <span className="font-black text-xl h-2 w-2 rounded-md bg-primary"></span>
                     </div>
                     <p className="text-lg text-gray-600 leading-relaxed font-medium">{typeof item === 'string' ? item : item.title || item.description}</p>
                   </div>
@@ -227,7 +237,7 @@ const DisplayCourses = () => {
               </div>
             </div>
           </div>
-        </div> */}
+        </div>
 
         <div className="mt-32">
           <div className="flex justify-center mb-16">

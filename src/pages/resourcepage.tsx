@@ -1,35 +1,82 @@
-const Resourcepage = () => {
-  const DisplayCourses = [
-    {
-      img: "/assets/instructor_img.png",
-      title: "Beginners Guide to UI/UX Design",
-      instructor: "By : J.D Tanwa",
-      date: "2022"
-    },
-    {
-      img: "/assets/instructor_img.png",
-      title: "Beginners Guide to UI/UX Design",
-      instructor: "By : J.D Tanwa",
-      date: "2022"
-    },
-    {
-      img: "/assets/instructor_img.png",
-      title: "Beginners Guide to UI/UX Design",
-      instructor: "By : J.D Tanwa",
-      date: "2022"
-    },
-    {
-      img: "/assets/instructor_img.png",
-      title: "Beginners Guide to UI/UX Design",
-      instructor: "By : J.D Tanwa",
-      date: "2022"
-    },
-  ]
+import SEO from "../components/SEO";
+import { PAGE_SEO, DEFAULT_SEO } from "../utils/seo-config";
 
-  const DisplayFaqs = {
-    Heading: 'What is FEMTECH Training Institute?',
-    text: 'FEMTECH is a technology training institute that empowers individuals with digital skills in areas like UI/UX design, software development, data science'
-  }
+const Resourcepage = () => {
+
+  const DisplayFaqs = [
+    {
+      question: "What is FEMTECH IT Centre?",
+      answer: "FEMTECH IT Centre is a professional ICT and digital skills training institute in Ilorin, Kwara State, Nigeria, offering practical and career-focused tech education for beginners and professionals."
+    },
+    {
+      question: "Where is FEMTECH IT Centre located?",
+      answer: "FEMTECH IT Centre has two training locations in Ilorin: No. 158, Ibrahim Taiwo Road, Opposite FEMTECH PC Clinic, Ilorin and No. 28, University Road, Tanke, Ilorin."
+    },
+    {
+      question: "What courses are offered at FEMTECH IT Centre?",
+      answer: "Our courses include ICT training, digital skills, data analysis, software tools, tech programs for kids, and corporate productivity training."
+    },
+    {
+      question: "Do I need prior computer or tech knowledge to enroll?",
+      answer: "No. Many FEMTECH courses are beginner-friendly and start from the basics."
+    },
+    {
+      question: "How long are FEMTECH IT Centre training programs?",
+      answer: "Training duration varies by course, ranging from short-term skill programs to intensive bootcamps."
+    },
+    {
+      question: "Does FEMTECH IT Centre issue certificates?",
+      answer: "Yes. Participants receive a certificate of completion after successfully completing the training and passing the end-of-training assessment."
+    },
+    {
+      question: "Is there an assessment before certification?",
+      answer: "Yes. All students are required to write an end-of-training assessment before a certificate is issued."
+    },
+    {
+      question: "Are FEMTECH classes practical and hands-on?",
+      answer: "Yes. Our classes are highly practical, project-based, and focused on real-world applications."
+    },
+    {
+      question: "Do I need a laptop for training?",
+      answer: "Yes. Students are required to come with their own laptop for all training programs."
+    },
+    {
+      question: "Are payment options flexible?",
+      answer: "Yes. FEMTECH IT Centre offers flexible payment options for selected courses."
+    },
+    {
+      question: "Can I request one-on-one training instead of group classes?",
+      answer: "Yes. One-on-one (private) training is available for students who prefer personalized learning instead of group training."
+    },
+    {
+      question: "Does FEMTECH offer corporate or organizational training?",
+      answer: "Yes. We provide customized corporate and organizational training in productivity, ICT, and digital transformation."
+    },
+    {
+      question: "Does FEMTECH run programs for children and teenagers?",
+      answer: "Yes. We offer tech training for children and teenagers, including holiday programs and bootcamps."
+    },
+    {
+      question: "Does FEMTECH provide internships or career support?",
+      answer: "Yes. Selected programs include mentorship, portfolio development, and internship opportunities."
+    },
+    {
+      question: "Is class attendance monitored?",
+      answer: "Yes. Class attendance is tracked, and students are expected to be available and participate fully in their classes."
+    },
+    {
+      question: "Can I request a makeup or remedial class?",
+      answer: "Yes. Students who miss classes or need extra support to keep pace with the program may request a makeup or remedial session at an additional fee."
+    },
+    {
+      question: "How can I register for FEMTECH IT Centre courses?",
+      answer: "You can register online through our website or contact our support team for assistance."
+    },
+    {
+      question: "How do I contact FEMTECH IT Centre?",
+      answer: "You can contact us via phone, email, or our official social media platforms."
+    }
+  ]
 
 
   const trainingPrograms = [
@@ -120,6 +167,13 @@ const Resourcepage = () => {
 
   return (
     <section className="pt-24 bg-gray-50 pb-20">
+      <SEO
+        title={PAGE_SEO.resources.title}
+        description={PAGE_SEO.resources.description}
+        keywords={PAGE_SEO.resources.keywords}
+        canonical={`${DEFAULT_SEO.siteUrl}/resources`}
+        ogImage={PAGE_SEO.resources.ogImage}
+      />
       <div className="relative mb-16">
         <div className="w-full h-[300px] md:h-[450px] overflow-hidden">
           <img src="/assets/resoureceimg.png" alt="Resources Hero" className="w-full h-full object-cover" />
@@ -159,14 +213,14 @@ const Resourcepage = () => {
             Find answers to all your questions about FEMTECH Training Institute.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
-            {Array.from({ length: 14 }).map((_, index) => (
+            {DisplayFaqs.map((faq, index) => (
               <div key={index} className="flex items-start gap-6 group">
                 <div className="w-12 h-12 bg-primary/10 rounded-2xl shrink-0 flex items-center justify-center text-primary font-black text-xl group-hover:bg-primary group-hover:text-white transition-all">
-                  ?
+                  {index + 1}
                 </div>
                 <div>
-                  <h2 className="font-bold text-xl text-gray-800 mb-2">{DisplayFaqs.Heading}</h2>
-                  <p className="text-gray-600 leading-relaxed">{DisplayFaqs.text}</p>
+                  <h2 className="font-bold text-xl text-gray-800 mb-2">{faq.question}</h2>
+                  <p className="text-gray-600 leading-relaxed">{faq.answer}</p>
                 </div>
               </div>
             ))}
