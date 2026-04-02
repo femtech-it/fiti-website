@@ -14,7 +14,7 @@ const Navbar = () => {
         <div className="fixed w-[100%] top-0 left-0 z-50">
             <div className="bg-primary text-white py-1">
                 <Marquee>
-                    Enroll Now for Our Latest Tech Training Programs! • Flexible Schedules Available • Free Training Kits for All Students • Expert Instructors with Industry Experience • 100% Hands-On Practical Training
+                    Enroll for Latest Tech Training Programs! • Flexible Schedules • Free Training Kits for All Students • Expert Instructors with Industry Experience • 100% Hands-On Practical Training
                 </Marquee>
             </div>
             <nav className="flex justify-between items-center bg-white shadow py-4 px-6 md:px-10 flex-wrap relative">

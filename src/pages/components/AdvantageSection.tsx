@@ -14,7 +14,7 @@ const AdvantageSection: React.FC = () => {
             <div className="container mx-auto px-4">
                 <div className="text-center mb-10">
                     <h2 className="text-3xl font-bold">
-                        Institute Advantage
+                        FEMTECH Advantage
                     </h2>
                 </div>
                 <div className="flex flex-wrap justify-center gap-4">

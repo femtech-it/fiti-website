@@ -29,10 +29,6 @@ const services = [
         title: 'Corporate Training',
         image: '/assets/instructor_img.png', // Using existing asset
     },
-    {
-        title: 'Professional IT Training',
-        image: '/assets/academy.png', // Using existing asset
-    },
 ];
 
 const WhatWeDoSection: React.FC = () => {

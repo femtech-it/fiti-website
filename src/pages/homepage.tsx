@@ -68,16 +68,16 @@ const Homepage = () => {
             animate="visible"
           >
             <motion.h1
-              className="text-white text-3xl md:text-5xl lg:text-7xl font-black leading-[1.1] md:leading-[1.05]"
+              className="text-white text-3xl md:text-3xl lg:text-5xl font-black leading-[1.1] md:leading-[1.05]"
               variants={fadeInUp}
             >
-              Power Your Future with Tech Skills that  <span className="text-[#F67809]">Matters </span>
+              Power Your Future with Tech Skills that  <span className="text-[#F67809]">Matter. </span>
             </motion.h1>
             <motion.p
               className="text-white text-lg md:text-xl lg:text-2xl max-w-xl opacity-90 leading-relaxed font-medium"
               variants={fadeInUp}
             >
-              From tech to personal growth we equip you with practical tools to grow, lead and succeed in today's digital world
+              From tech to personal growth, we equip you with practical tools to grow, lead and succeed in today's digital world.
             </motion.p>
             <motion.div
               className="flex flex-wrap justify-center lg:justify-start gap-4 md:gap-8 pt-4 md:pt-6"
@@ -85,7 +85,7 @@ const Homepage = () => {
             >
               <Link
                 to="/registration"
-                className="bg-white text-[#0010A3] hover:bg-gray-100 h-14 md:h-16 px-8 md:px-16 text-xl md:text-2xl font-black rounded-md border-none cursor-pointer shadow-2xl transition-transform hover:scale-105 flex items-center justify-center no-underline"
+                className="bg-white text-[#0010A3] hover:bg-gray-100 h-14 md:h-16 px-8 md:px-5 text-md md:text-xl font-semibold rounded-md border-none cursor-pointer shadow-2xl transition-transform hover:scale-105 flex items-center justify-center no-underline"
               >
                 Get started
               </Link>
@@ -93,7 +93,7 @@ const Homepage = () => {
                 href="https://wa.me/2347059961675?text=Hello%2C%20I%27d%20like%20to%20inquire%20about%20your%20tech%20training%20programs"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-[#F67809] text-white hover:bg-[#E56708] h-14 md:h-16 px-6 md:px-12 text-xl md:text-2xl font-black rounded-md cursor-pointer border-none shadow-2xl transition-transform hover:scale-105 flex items-center justify-center no-underline"
+                className="bg-[#F67809] text-white hover:bg-[#E56708] h-14 md:h-16 px-6 md:px-5 text-md md:text-xl font-semibold rounded-md cursor-pointer border-none shadow-2xl transition-transform hover:scale-105 flex items-center justify-center no-underline"
               >
                 Chat with an Advisor
               </a>

@@ -16,6 +16,11 @@ interface CourseData {
     color: string;
 }
 
+
+const substringText = (text: string, length: number) => {
+    return text.substring(0, length) + "...";
+}
+
 // Improved Fisher-Yates shuffle for better randomness
 const getRandomCourses = (courses: Course[], count: number): CourseData[] => {
     const shuffled = [...courses];
@@ -145,11 +150,11 @@ const ReadyToElevateSection: React.FC = () => {
                                             >
                                                 <div className="h-4 w-full" style={{ backgroundColor: course.color }}></div>
                                                 <div className="p-6 pb-8 flex flex-col flex-grow">
-                                                    <h3 className="text-xl font-bold text-gray-800 mb-2 tracking-tight">
+                                                    <h3 className="font-bold text-gray-800 mb-2 tracking-tight">
                                                         {course.title}
                                                     </h3>
                                                     <p className="text-gray-500 text-sm leading-relaxed mb-6 flex-grow">
-                                                        {course.description}
+                                                        {substringText(course.description, 200)}
                                                     </p>
                                                     <div className="flex items-center gap-2 text-gray-700 font-bold mb-6">
                                                         <LuCalendar className="text-gray-900 text-xl" />
@@ -177,7 +182,7 @@ const ReadyToElevateSection: React.FC = () => {
                                                 <FaHandPointer className="text-lg md:text-xl opacity-60 transform rotate-45 absolute top-6" />
                                                 <div className="flex items-center justify-center h-full">
                                                     <span className="whitespace-nowrap font-black text-lg md:text-xl tracking-widest uppercase transform -rotate-90">
-                                                        {course.title}
+                                                        {substringText(course.title, 20)}
                                                     </span>
                                                 </div>
                                                 <div className="w-1 md:w-1.5 h-1/3 bg-white/20 rounded-full absolute bottom-6"></div>

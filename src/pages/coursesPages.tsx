@@ -111,7 +111,7 @@ const CoursesPages = () => {
                   />
                   <button
                     onClick={handleSearch}
-                    className="bg-primary text-white p-3 rounded-xl hover:bg-opacity-90 transition-colors"
+                    className="bg-primary text-white p-3 rounded-xl hover:bg-opacity-90 transition-colors cursor-pointer"
                   >
                     <FaSearch />
                   </button>
@@ -119,7 +119,7 @@ const CoursesPages = () => {
               </div>
 
               {/* Level Filter */}
-              <div className="mb-6">
+              {/* <div className="mb-6">
                 <label className="block text-sm font-semibold text-gray-700 mb-2">Level</label>
                 <select
                   className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/20"
@@ -131,10 +131,10 @@ const CoursesPages = () => {
                   <option value="INTERMEDIATE">Intermediate</option>
                   <option value="ADVANCED">Advanced</option>
                 </select>
-              </div>
+              </div> */}
 
               {/* Duration Filter */}
-              <div className="mb-6">
+              {/* <div className="mb-6">
                 <label className="block text-sm font-semibold text-gray-700 mb-2">Duration (Weeks)</label>
                 <input
                   type="number"
@@ -143,10 +143,10 @@ const CoursesPages = () => {
                   value={duration || ''}
                   onChange={(e) => { setDuration(e.target.value ? Number(e.target.value) : undefined); setPage(1); }}
                 />
-              </div>
+              </div> */}
 
               {/* Price Range */}
-              <div className="mb-6">
+              {/* <div className="mb-6">
                 <label className="block text-sm font-semibold text-gray-700 mb-2">Price Range (₦)</label>
                 <div className="flex gap-2">
                   <input
@@ -179,7 +179,7 @@ const CoursesPages = () => {
                 className="w-full py-3 text-sm font-bold text-gray-500 hover:text-primary transition-colors border border-gray-200 rounded-xl hover:bg-gray-50"
               >
                 Reset Filters
-              </button>
+              </button> */}
 
             </div>
           </div>
