@@ -148,14 +148,15 @@ const Contactus = () => {
             <Button
               htmlType="submit"
               disabled={enquiryMutation.isPending}
-              className="bg-secondary border-none hover:scale-105 transition-transform rounded-2xl shadow-xl text-white disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-3"
+              className="bg-secondary border-none hover:scale-105 transition-transform rounded-2xl shadow-xl text-white disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-3 rounded-full text-white"
               style={{
                 height: '60px',
                 width: '100%',
                 maxWidth: '350px',
                 fontSize: '20px',
                 fontWeight: 'bold',
-                padding: '0 32px'
+                padding: '0 32px',
+                color: "white"
               }}
             >
               {enquiryMutation.isPending ? (
@@ -207,7 +208,7 @@ const Contactus = () => {
               <p className="text-gray-600 leading-relaxed">
                 28, University Road, Tanke. Ilorin <br />
                 <span className="font-semibold text-primary">fiti@femtechtraining.com</span><br />
-                <span className="font-semibold text-primary">+(234) 705-996-1675</span>
+                <span className="font-semibold text-primary">+(234) 705-996-1710</span>
               </p>
             </div>
           </div>

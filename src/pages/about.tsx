@@ -55,7 +55,7 @@ const AboutUsPage = () => {
     { img: "../assets/comptialogo.png" },
     { img: "../assets/wtec.png" },
     { img: "../assets/abubakar1.png" },
-    { img: "../assets/academy.png" },
+    // { img: "../assets/academy.png" },
   ]
 
   return (

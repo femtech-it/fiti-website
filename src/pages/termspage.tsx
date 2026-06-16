@@ -36,7 +36,21 @@ const terms = [
     title: "Makeup Class Policy",
     content:
       "Make-up classes are available for students who missed a session without prior notification or need additional support, scheduled at the institute’s discretion for ₦10,000 per 2-hour session, with no fee waivers.",
-  }
+  },
+  {
+    title: "Payment Policy",
+    content:
+      "Students must pay 70% of the tuition fee upfront and the remaining 30% balance must be paid within one month of the initial payment. Failure to complete the payment within this period will result in the suspension of classes until full payment is made.",
+  },
+  {
+    title: "Code of Conduct",
+    content:
+      "Students are expected to maintain professional behavior and respect instructors, staff, and fellow participants throughout the training.",
+  },
+  {
+    title: "Late Arrival Policy",
+    content: "Students who arrive more than 30 minutes after the class has started may not be admitted into that session.",
+  },
 ];
 
 const Termspage = () => {

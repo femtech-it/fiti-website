@@ -193,7 +193,17 @@ const CoursesPages = () => {
             ) : isError ? (
               <div className="text-center py-20 text-red-500 text-xl font-bold bg-red-50 rounded-3xl p-10 border border-red-100">
                 <p>Error loading courses.</p>
-                <p className="text-sm mt-2 text-red-400">{(error as Error).message}</p>
+                <p className="text-sm mt-2 text-red-400">
+                  {(error as any)?.response?.status 
+                    ? `Status: ${(error as any).response.status} - ${(error as any).response.data?.message || (error as Error).message}`
+                    : (error as Error).message}
+                </p>
+                <button 
+                  onClick={() => window.location.reload()}
+                  className="mt-4 px-6 py-2 bg-primary text-white rounded-xl text-sm hover:bg-opacity-90 transition-all"
+                >
+                  Retry Loading
+                </button>
               </div>
             ) : (
               <>

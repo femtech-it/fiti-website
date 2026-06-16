@@ -1,7 +1,10 @@
+import { useNavigate } from "react-router-dom";
 import SEO from "../components/SEO";
 import { PAGE_SEO, DEFAULT_SEO } from "../utils/seo-config";
 
 const Resourcepage = () => {
+
+  const navigate = useNavigate()
 
   const DisplayFaqs = [
     {
@@ -163,6 +166,7 @@ const Resourcepage = () => {
     },
   ];
 
+  const gotoContactPage = () => navigate("/contact/us")
 
 
   return (
@@ -291,7 +295,7 @@ const Resourcepage = () => {
 
                 {/* Button */}
                 <div className="mt-10">
-                  <button className="w-full bg-secondary hover:bg-opacity-90 text-white py-4 rounded-2xl font-bold text-lg shadow-lg transition-all hover:translate-y-[-2px]">
+                  <button onClick={gotoContactPage} className="w-full bg-secondary hover:bg-opacity-90 text-white py-4 rounded-2xl font-bold text-lg shadow-lg transition-all hover:translate-y-[-2px]">
                     Contact Us to Learn More
                   </button>
                 </div>

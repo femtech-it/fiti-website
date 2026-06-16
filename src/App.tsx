@@ -2,6 +2,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import { Toaster } from "sonner";
 import SEO from "./components/SEO"
+import ScrollToTop from "./components/ScrollToTop"
 import Navbar from "./pages/components/navbar"
 import Homepage from "./pages/homepage"
 import Footer from "./pages/components/footer"
@@ -25,6 +26,7 @@ function App() {
 
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <SEO />
       <Navbar />
       <Routes>

@@ -3,31 +3,31 @@ import React from 'react';
 const services = [
     {
         title: 'Coding for Children',
-        image: '/assets/coding_children.png',
+        image: '/assets/coding-for-children.jpeg',
     },
     {
         title: 'Enterprise Solution Development',
-        image: '/assets/enterprise_sol.png',
+        image: '/assets/enterprise.jpg',
     },
     {
         title: 'One-On-One Training',
-        image: '/assets/one_on_one.png',
+        image: '/assets/one-on-one.jpg',
     },
     {
         title: 'Online Training',
-        image: '/assets/online_training.png',
+        image: '/assets/online.jpg',
     },
     {
         title: 'Vocational Tech Training',
-        image: '/assets/laptop.png', // Using existing asset
+        image: '/assets/vocational.jpg',
     },
     {
         title: 'Consultancy',
-        image: '/assets/bussunes.png', // Using existing asset
+        image: '/assets/consultancy.png',
     },
     {
         title: 'Corporate Training',
-        image: '/assets/instructor_img.png', // Using existing asset
+        image: '/assets/cooperate.jpg',
     },
 ];
 
