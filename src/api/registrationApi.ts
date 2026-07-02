@@ -14,7 +14,7 @@ export interface RegistrationPayload {
   emergencyRelationship: string;
   courseOfInterestId: number;
   trainingBranchId: number;
-  documentId: number;
+  documentId?: number;
   preferredTrainingMode: "VIRTUAL" | "PHYSICAL";
   hearAboutUs: string;
 }

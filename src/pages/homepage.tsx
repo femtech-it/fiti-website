@@ -12,7 +12,7 @@ import MissionSection from "./components/MissionSection"
 import WhatWeDoSection from "./components/WhatWeDoSection"
 import StatsSection from "./components/StatsSection"
 import ReadyToElevateSection from "./components/ReadyToElevateSection"
-// import TestimonialsSection from "./components/TestimonialsSection"
+import TestimonialsSection from "./components/TestimonialsSection"
 import VideoSection from "./components/VideoSection"
 import NewsletterSection from "./components/NewsletterSection"
 
@@ -119,7 +119,7 @@ const Homepage = () => {
       <WhatWeDoSection />
       <StatsSection />
       <ReadyToElevateSection />
-      {/* <TestimonialsSection /> */}
+      <TestimonialsSection />
       <VideoSection />
       <NewsletterSection />
     </motion.main>

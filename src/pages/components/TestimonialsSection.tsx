@@ -1,8 +1,10 @@
 import React, { useRef } from 'react';
 import { Carousel } from 'antd';
 import { FaQuoteLeft, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import { useQuery } from '@tanstack/react-query';
+import { fetchTestimonials, type Testimonial } from '../../api/testimonialsApi';
 
-const testimonials = [
+const fallbackTestimonials = [
     {
         name: 'Jayden B.',
         role: 'Frontend Developer',
@@ -32,6 +34,41 @@ const testimonials = [
 
 const TestimonialsSection: React.FC = () => {
     const carouselRef = useRef<any>(null);
+
+    const { data, isError } = useQuery({
+        queryKey: ['testimonials', { limit: 10, page: 1 }],
+        queryFn: () => fetchTestimonials({ limit: 10, page: 1 }),
+        staleTime: 5 * 60 * 1000,
+    });
+
+    const testimonialsList = React.useMemo(() => {
+        const hasResults = data?.data?.result && data.data.result.length > 0;
+        if (isError || !hasResults) {
+            return fallbackTestimonials;
+        }
+
+        return data.data.result.map((item: Testimonial, index: number) => {
+            const [namePart, ...restParts] = item.name.split(/\s+-\s+/);
+            const cleanName = namePart ? namePart.trim() : item.name;
+            const coursePart = restParts.join(' - ').trim();
+            const role = item.occupation || coursePart || 'Student';
+
+            const isEven = index % 2 === 0;
+            const bgColor = isEven ? 'bg-[#B4BC5C]' : 'bg-[#0010A3]';
+            const quoteColor = isEven ? 'text-[#B4BC5C]' : 'text-[#0010A3]';
+
+            const image = item.profileImage?.url || (isEven ? '/assets/faruk.png' : '/assets/student3.png');
+
+            return {
+                name: cleanName,
+                role,
+                quote: item.message,
+                image,
+                bgColor,
+                quoteColor,
+            };
+        });
+    }, [data, isError]);
 
     return (
         <section className="py-24 bg-white overflow-hidden">
@@ -70,14 +107,16 @@ const TestimonialsSection: React.FC = () => {
                                 }
                             ]}
                         >
-                            {testimonials.map((testimonial, index) => (
+                            {testimonialsList.map((testimonial, index) => (
                                 <div key={index} className="px-4 py-8">
-                                    <div className="bg-white rounded-[40px] shadow-2xl overflow-hidden relative border border-gray-100 min-h-[500px] flex flex-col">
-                                        <div className="p-10 flex-grow">
-                                            <FaQuoteLeft className={`text-4xl mb-6 ${testimonial.quoteColor}`} />
-                                            <p className="text-gray-600 text-lg leading-relaxed">
-                                                {testimonial.quote}
-                                            </p>
+                                    <div className="bg-white rounded-[40px] shadow-2xl overflow-hidden relative border border-gray-100 h-[540px] flex flex-col">
+                                        <div className="p-8 md:p-10 flex flex-col flex-grow overflow-hidden">
+                                            <FaQuoteLeft className={`text-4xl mb-4 shrink-0 ${testimonial.quoteColor}`} />
+                                            <div className="overflow-y-auto pr-2 flex-grow">
+                                                <p className="text-gray-600 text-lg leading-relaxed">
+                                                    {testimonial.quote}
+                                                </p>
+                                            </div>
                                         </div>
 
                                         {/* Student Info with Wave Background */}
@@ -134,3 +173,4 @@ const TestimonialsSection: React.FC = () => {
 };
 
 export default TestimonialsSection;
+

@@ -121,11 +121,6 @@ const Registrationform = () => {
       return;
     }
 
-    if (!formData.documentId) {
-      toast.warning("Please upload a passport photograph.");
-      return;
-    }
-
     // Basic required field validation (can be enhanced)
     const requiredFields = ['fullName', 'email', 'phone', 'gender', 'emergencyFullName', 'emergencyPhone', 'courseOfInterestId', 'trainingBranchId'];
     const missing = requiredFields.filter(field => !formData[field as keyof RegistrationPayload]);
@@ -288,7 +283,7 @@ const Registrationform = () => {
             <div>
               <h2 className="text-2xl font-bold text-gray-800 mb-8 pb-2 border-b-2 border-primary/20 inline-block">Document Upload</h2>
               <div className="space-y-4">
-                <p className="text-gray-700 font-medium">Passport Photograph (Upload clear headshot – JPEG/PNG, max 2MB) *</p>
+                <p className="text-gray-700 font-medium">Passport Photograph (Upload clear headshot – JPEG/PNG, max 2MB) (Optional)</p>
                 <input type="file" onChange={handleFileChange} accept="image/png, image/jpeg" className="w-full p-4 bg-gray-50 rounded-2xl border-2 border-dashed border-gray-200 hover:border-primary transition-colors" />
                 {isUploading && <p className="text-primary flex items-center gap-2"><FaSpinner className="animate-spin" /> Uploading...</p>}
                 {formData.documentId && <p className="text-green-600 font-bold">Document uploaded!</p>}
